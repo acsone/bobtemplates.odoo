@@ -38,6 +38,13 @@ Add a new model in your current addon directory:
 
     mrbob bobtemplates.odoo:model
 
+Useful links
+~~~~~~~~~~~~
+
+* pypi page: https://pypi.python.org/pypi/bobtemplates.odoo
+* code repository: https://github.com/acsone/bobtemplates.odoo
+* report issues at: https://github.com/acsone/bobtemplates.odoo/issues
+
 Credits
 ~~~~~~~
 
