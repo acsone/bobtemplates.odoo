@@ -8,12 +8,12 @@ bobtemplates.odoo
     :target: http://badge.fury.io/py/bobtemplates.odoo
 
 ``bobtemplates.odoo`` is a set of `mr.bob 
-<https://http://mrbob.readthedocs.io/en/latest/>`_ 
+<https://mrbob.readthedocs.io/en/latest/>`_
 templates to use when developing Odoo addons.
 
 It provides the following templates
 
-  * ``model``: an Odoo model with accompanying form, tree, action, menu and 
+  * ``model``: an Odoo model with accompanying form, tree, action, menu and
     basic ACL.
 
 The following are candidates:
