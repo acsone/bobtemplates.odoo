@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright {{{ copyright.year }}} {{{ copyright.name }}}
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+<data>
+
+  <record id="{{{ model.name_underscored }}}_form_view" model="ir.ui.view">
+    <field name="name">{{{ model.name_dotted }}} form view</field>
+    <field name="model">{{{ model.name_dotted }}}</field>
+    {{% if model.inherit %}}
+    <field name="inherit_id" ref="othermodule.form_view"/> <!-- TODO -->
+    {{% endif %}}
+    <field name="arch" type="xml">
+        <!-- TODO -->
+    </field>
+  </record>
+
+</data>
+</openerp>
