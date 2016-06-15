@@ -3,11 +3,11 @@
 # Copyright © 2016 ACSONE SA/NV
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='bobtemplates.odoo',
-    version='1.0.0a1',
+    version='1.0.0a2',
     description='mr.bob templates for Odoo projects',
     long_description='\n'.join((
         open('README.rst').read(),
@@ -28,6 +28,9 @@ setup(
     install_requires=[
         'mr.bob',
     ],
+    packages=find_packages(),
+    # TODO: bobtemplates.odoo should be a ns package too but that breaks mr.bob
+    namespace_packages=['bobtemplates'],
     include_package_data=True,
     setup_requires=['setuptools-git'],
 )
