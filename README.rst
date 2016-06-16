@@ -15,7 +15,7 @@ templates to use when developing Odoo addons.
 
 It provides the following templates:
 
-  * ``addon``: an addon skeletton
+  * ``addon``: an addon skeletton, with optional OCA README and icon
   * ``model``: an Odoo model with accompanying form, tree, action, menu,
     demo data and ACL
   * ``test``: a test class
