@@ -30,19 +30,15 @@ def _underscored_to_camelwords(underscored):
 
 
 def _delete_file(configurator, *args):
+    """ remove file and remove it's directories if empty """
     path = os.path.join(configurator.target_directory, *args)
-    try:
-        os.remove(path)
-    except OSError:
-        pass
-
-
-def _delete_dir(configurator, *args):
-    path = os.path.join(configurator.target_directory, *args)
-    try:
-        os.rmdir(path)
-    except OSError:
-        pass
+    os.remove(path)
+    for i in range(len(args) - 1):
+        path = os.path.join(configurator.target_directory, *args[:-i])
+        try:
+            os.rmdir(path)
+        except OSError:
+            pass
 
 
 def _load_manifest(configurator):
@@ -64,6 +60,12 @@ def _add_local_import(configurator, package, module):
         init = ''
     if import_string not in init:
         open(init_path, 'a').write(import_string + '\n')
+
+
+def _rm_suffix(suffix, configurator, *args):
+    path = os.path.join(configurator.target_directory, *args)
+    assert path.endswith(suffix)
+    os.rename(path, path[:-len(suffix)])
 
 
 #
@@ -94,12 +96,10 @@ def post_render_model(configurator):
     if not configurator.variables['model.acl']:
         _delete_file(configurator, 'security',
                      configurator.variables['model.name_underscored'] + '.xml')
-        _delete_dir(configurator, 'security')
     # remove demo data
     if not configurator.variables['model.demo_data']:
         _delete_file(configurator, 'demo',
                      configurator.variables['model.name_underscored'] + '.xml')
-        _delete_dir(configurator, 'demo')
 
     show_message(configurator)
 
@@ -113,6 +113,20 @@ def pre_render_addon(configurator):
     variables = configurator.variables
     variables['addon.name_camelwords'] = \
         _underscored_to_camelwords(variables['addon.name'])
+
+
+def post_render_addon(configurator):
+    variables = configurator.variables
+    if variables['addon.oca']:
+        _rm_suffix('.oca', configurator, variables['addon.name'],
+                   'README.rst.oca')
+        _rm_suffix('.oca', configurator, variables['addon.name'],
+                   'static', 'description', 'icon.svg.oca')
+    else:
+        _delete_file(configurator, variables['addon.name'],
+                     'README.rst.oca')
+        _delete_file(configurator, variables['addon.name'],
+                     'static', 'description', 'icon.svg.oca')
 
 
 #

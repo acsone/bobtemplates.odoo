@@ -61,6 +61,10 @@ class OdooTemplatesTest(BaseTemplateTest):
                 self.addon,
                 self.addon + '/__init__.py',
                 self.addon + '/__openerp__.py',
+                self.addon + '/README.rst',
+                self.addon + '/static',
+                self.addon + '/static/description',
+                self.addon + '/static/description/icon.svg',
             ]
         )
 
