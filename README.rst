@@ -32,6 +32,10 @@ Install
 Quickstart
 ~~~~~~~~~~
 
+CAUTION: it is recommanded to backup or vcs commit your current 
+directory before running these commands, so you can easily see
+what has been generated and/or changed..
+
 Add a new model in your current addon directory:
 
   .. code:: shell
