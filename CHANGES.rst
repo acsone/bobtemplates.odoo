@@ -13,6 +13,8 @@ Changes
 - many improvements and fixes to the model template (views, security,
   demo data, and more)
 - addon template
+- test template
+- tests (with tox and travis)
 
 1.0.0a2 (2016-06-15)
 --------------------
