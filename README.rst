@@ -5,7 +5,7 @@ bobtemplates.odoo
    :target: http://www.gnu.org/licenses/agpl.html
    :alt: License: AGPL 3.0 or Later
 .. image:: https://badge.fury.io/py/bobtemplates.odoo.svg
-    :target: http://badge.fury.io/py/bobtemplates.odoo
+   :target: http://badge.fury.io/py/bobtemplates.odoo
 .. image:: https://travis-ci.org/acsone/bobtemplates.odoo.svg?branch=master
    :target: https://travis-ci.org/acsone/bobtemplates.odoo
 
@@ -17,7 +17,7 @@ It provides the following templates:
 
   * ``addon``: an addon skeletton
   * ``model``: an Odoo model with accompanying form, tree, action, menu,
-   demo data and ACL
+    demo data and ACL
   * ``test``: a test class
 
 The following are candidates (pull requests welcome):
