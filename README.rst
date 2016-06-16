@@ -7,7 +7,7 @@ bobtemplates.odoo
 .. image:: https://badge.fury.io/py/bobtemplates.odoo.svg
     :target: http://badge.fury.io/py/bobtemplates.odoo
 
-``bobtemplates.odoo`` is a set of `mr.bob 
+``bobtemplates.odoo`` is a set of `mr.bob
 <https://mrbob.readthedocs.io/en/latest/>`_
 templates to use when developing Odoo addons.
 
@@ -32,15 +32,21 @@ Install
 Quickstart
 ~~~~~~~~~~
 
-CAUTION: it is recommanded to backup or vcs commit your current 
+CAUTION: it is recommanded to backup or vcs commit your current
 directory before running these commands, so you can easily see
-what has been generated and/or changed..
+what has been generated and/or changed.
 
 Add a new model in your current addon directory:
 
   .. code:: shell
 
     mrbob bobtemplates.odoo:model
+
+Tip: read the `mr.bob user guide
+<http://mrbob.readthedocs.io/en/latest/userguide.html>`_.
+In particular it explain how to set default values to avoid
+retyping the same answers at each run (such as the copyright
+author).
 
 Useful links
 ~~~~~~~~~~~~
