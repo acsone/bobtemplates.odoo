@@ -15,6 +15,7 @@ class BaseTemplateTest(unittest.TestCase):
     # credit bobtemplates.plone
 
     def setUp(self):
+        self.maxDiff = None
         self.tempdir = tempfile.mkdtemp()
         self.addCleanup(shutil.rmtree, self.tempdir)
 
@@ -39,25 +40,62 @@ class BaseTemplateTest(unittest.TestCase):
             % options)
 
 
-class PloneTemplateTest(BaseTemplateTest):
+class OdooTemplatesTest(BaseTemplateTest):
     """Tests for the `plone_addon` template."""
     template = ''
-    addon = ''
+    addon = 'addon_foo'
     answers_file = ''
-    target_dir = '.'
+    target_dir = ''
 
-    def test_odoo_addon(self):
+    def _create_addon(self):
         self.template = 'addon'
-        self.addon = 'addon_foo'
         self.answers_file = 'test_odoo_addon_answers.ini'
         self.target_dir = '.'
-        self.maxDiff = None
-        result = self.create_template()
+        return self.create_template()
+
+    def test_odoo_addon(self):
+        result = self._create_addon()
         self.assertItemsEqual(
             result.files_created.keys(),
             [
                 self.addon,
                 self.addon + '/__init__.py',
                 self.addon + '/__openerp__.py',
+            ]
+        )
+
+    def test_odoo_model(self):
+        self._create_addon()
+        self.template = 'model'
+        self.answers_file = 'test_odoo_model_answers.ini'
+        self.target_dir = 'addon_foo'
+        result = self.create_template()
+        self.assertItemsEqual(
+            result.files_created.keys(),
+            [
+                self.addon + '/models',
+                self.addon + '/models/foo_model.py',
+                self.addon + '/models/__init__.py',
+                self.addon + '/views',
+                self.addon + '/views/foo_model.xml',
+                self.addon + '/demo',
+                self.addon + '/demo/foo_model.xml',
+                self.addon + '/security',
+                self.addon + '/security/foo_model.xml',
+            ]
+        )
+
+    def test_odoo_test(self):
+        self._create_addon()
+        self.template = 'test'
+        self.answers_file = 'test_odoo_test_answers.ini'
+        self.target_dir = 'addon_foo'
+        result = self.create_template()
+        self.assertItemsEqual(
+            result.files_created.keys(),
+            [
+                self.addon + '/tests',
+                self.addon + '/tests/test_foo.py',
+                self.addon + '/tests/__init__.py',
             ]
         )

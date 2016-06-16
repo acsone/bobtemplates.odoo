@@ -70,21 +70,16 @@ def _add_local_import(configurator, package, module):
 # model hooks
 #
 
-def post_question_model_name_dotted(configurator, question, answer):
-    if '.' not in answer:
-        raise ValidationError('Name must contain a dot')
-    configurator.variables['model.name_underscored'] = \
-        _dotted_to_underscored(answer)
-    configurator.variables['model.name_camelcased'] = \
-        _dotted_to_camelcased(answer)
-    configurator.variables['model.name_camelwords'] = \
-        _dotted_to_camelwords(answer)
-    return answer
-
-
 def pre_render_model(configurator):
     _load_manifest(configurator)  # check manifest is present
-    configurator.variables['addon.name'] = \
+    variables = configurator.variables
+    variables['model.name_underscored'] = \
+        _dotted_to_underscored(variables['model.name_dotted'])
+    variables['model.name_camelcased'] = \
+        _dotted_to_camelcased(variables['model.name_dotted'])
+    variables['model.name_camelwords'] = \
+        _dotted_to_camelwords(variables['model.name_dotted'])
+    variables['addon.name'] = \
         os.path.basename(os.path.normpath(configurator.target_directory))
 
 
