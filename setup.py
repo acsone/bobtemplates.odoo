@@ -28,7 +28,7 @@ setup(
     install_requires=[
         'mr.bob',
     ],
-    packages=find_packages(),
+    packages=find_packages(exclude=['tests']),
     # TODO: bobtemplates.odoo should be a ns package too but that breaks mr.bob
     namespace_packages=['bobtemplates'],
     include_package_data=True,
