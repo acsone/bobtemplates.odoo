@@ -5,12 +5,14 @@ Changes
 .. ----------
 .. -
 
-1.0.0a3 (2016-06-16)
+1.0.0b1 (2016-06-16)
 --------------------
-- add post render message inviting the user to add the view xml in
-  __openerp__.py data section
+- add post render message inviting the user to add the generated xml
+  files in __openerp__.py data section
 - auto add model import to models/__init__.py
-- many improvements to the model template (views, security)
+- many improvements and fixes to the model template (views, security,
+  demo data, and more)
+- addon template
 
 1.0.0a2 (2016-06-15)
 --------------------

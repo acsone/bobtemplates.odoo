@@ -13,14 +13,16 @@ templates to use when developing Odoo addons.
 
 It provides the following templates
 
+  * ``addon``: create an addon skeletton
   * ``model``: an Odoo model with accompanying form, tree, action, menu and
     basic ACL.
 
-The following are candidates:
+The following are candidates (pull requests welcome):
 
-  * ``addon``: create an addon skeletton
   * ``report``
   * ``controller``
+  * ``wizard``
+  * ``widget``
 
 Install
 ~~~~~~~
@@ -36,7 +38,14 @@ CAUTION: it is recommanded to backup or vcs commit your current
 directory before running these commands, so you can easily see
 what has been generated and/or changed.
 
-Add a new model in your current addon directory:
+Create a new addon in the current directory:
+
+  .. code:: shell
+
+    mrbob bobtemplates.odoo:addon
+
+Now go to the newly created addon directory and run this to
+add a new model, with associated views, demo data, and acl:
 
   .. code:: shell
 

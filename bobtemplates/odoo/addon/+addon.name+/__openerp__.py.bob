@@ -1,0 +1,21 @@
+# -*- coding: utf-8 -*-
+# Copyright {{{ copyright.year }}} {{{ copyright.name }}}
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+
+{
+    'name': '{{{ addon.name_camelwords }}}',
+    'summary': """
+        {{{ addon.summary }}}""",
+    'version': '{{{ addon.version }}}',
+    'license': 'AGPL-3',
+    'author': '{{{ copyright.name }}}',
+{{% if copyright.website %}}
+    'website': '{{{ copyright.website }}}',
+{{% endif %}}
+    'depends': [
+    ],
+    'data': [
+    ],
+    'demo': [
+    ],
+}
