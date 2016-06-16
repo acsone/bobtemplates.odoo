@@ -6,6 +6,8 @@ bobtemplates.odoo
    :alt: License: AGPL 3.0 or Later
 .. image:: https://badge.fury.io/py/bobtemplates.odoo.svg
     :target: http://badge.fury.io/py/bobtemplates.odoo
+.. image:: https://travis-ci.org/acsone/bobtemplates.odoo.svg?branch=master
+   :target: https://travis-ci.org/acsone/bobtemplates.odoo
 
 ``bobtemplates.odoo`` is a set of `mr.bob
 <https://mrbob.readthedocs.io/en/latest/>`_
