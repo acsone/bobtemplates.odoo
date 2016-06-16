@@ -6,22 +6,66 @@
 <data>
 
 {{% if model.view_form %}}
-  <record id="{{{ model.name_underscored }}}_form_view" model="ir.ui.view">
-    <field name="name">{{{ model.name_dotted }}} form view</field>
-    <field name="model">{{{ model.name_dotted }}}</field>
+    <record model="ir.ui.view" id="{{{ model.name_underscored }}}_form_view">
+        <field name="name">{{{ model.name_dotted }}}.form (in {{{ addon.name }}})</field>
+        <field name="model">{{{ model.name_dotted }}}</field>
 {{% if model.inherit %}}
-    <field name="inherit_id" ref="othermodule.form_view"/> <!-- TODO -->
+        <field name="inherit_id" ref="TODO othermodule.form_view"/>
 {{% endif %}}
-    <field name="arch" type="xml">
-        <!-- TODO -->
-    </field>
-  </record>
+        <field name="arch" type="xml">
+            <!-- TODO -->
+{{% if not model.inherit %}}
+            <form>
+                <header>
+                    <!-- TODO -->
+                </header>
+                <sheet>
+                    <!-- TODO -->
+                </sheet>
+                <div class="oe_chatter"></div>
+            </form>
+{{% endif %}}
+        </field>
+    </record>
+{{% endif %}}
+
+{{% if model.view_filter %}}
+    <record model="ir.ui.view" id="{{{ model.name_underscored }}}_filter_view">
+        <field name="name">{{{ model.name_dotted }}}.filter (in {{{ addon.name }}})</field>
+        <field name="model">{{{ model.name_dotted }}}</field>
+{{% if model.inherit %}}
+        <field name="inherit_id" ref="TODO othermodule.filter_view"/>
+{{% endif %}}
+        <field name="arch" type="xml">
+            <!-- TODO -->
+        </field>
+    </record>
 {{% endif %}}
 
 {{% if model.view_tree %}}
+    <record model="ir.ui.view" id="{{{ model.name_underscored }}}_tree_view">
+        <field name="name">{{{ model.name_dotted }}}.tree (in {{{ addon.name }}})</field>
+        <field name="model">{{{ model.name_dotted }}}</field>
+{{% if model.inherit %}}
+        <field name="inherit_id" ref="TODO othermodule.tree_view"/>
+{{% endif %}}
+        <field name="arch" type="xml">
+            <!-- TODO -->
+        </field>
+    </record>
 {{% endif %}}
 
 {{% if model.view_menu %}}
+    <record model="ir.ui.actions.act_window" id="{{{ model.name_underscored }}}_act_window">
+        <field name="name">{{{ model.name_dotted }}}.act_window (in {{{ addon.name }}})</field>
+        <field name="res_model">{{{ model.name_dotted }}}</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="{{{ model.name_underscored }}}_menu"
+        parent="TODO xmlid of parent menu"
+        action="{{{ model.name_underscored }}}_act_window"
+    />
 {{% endif %}}
 
 </data>

@@ -30,10 +30,32 @@ def post_question_model_name_dotted(configurator, question, answer):
     return answer
 
 
+def pre_render_model(configurator):
+    configurator.variables['addon.name'] = \
+        os.path.basename(os.path.normpath(configurator.target_directory))
+
+
 def post_render_model(configurator):
+    # add model import in __init__.py
     init_path = os.path.join(configurator.target_directory,
                              'models', '__init__.py')
     with open(init_path, 'a') as init_file:
         init_file.write('from . import {}\n'.format(
             configurator.variables['model.name_underscored']))
+    # acl file
+    security_path = os.path.join(configurator.target_directory, 'security')
+    security_csv_name = 'ir.model.access.' + \
+        configurator.variables['model.name_underscored'] + '.csv'
+    if not configurator.variables['model.acl']:
+        os.remove(os.path.join(security_path, security_csv_name))
+        try:
+            os.rmdir(security_path)
+        except OSError:
+            # not empty, probably
+            pass
+    else:
+        print("Do not forget to add {} "
+              "in __openerp__.py data section.".format(
+                  "security/" + security_csv_name))
+
     show_message(configurator)

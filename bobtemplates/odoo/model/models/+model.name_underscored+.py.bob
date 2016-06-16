@@ -8,7 +8,7 @@ from openerp import models, fields, api, _
 class {{{ model.name_camelcased }}}(models.Model):
 
     {{% if model.inherit: %}}
-    _inherit = "{{{ model.name_dotted }}}"
+    _inherit = '{{{ model.name_dotted }}}'
     {{% else %}}
-    _name = "{{{ model.name_dotted }}}"
+    _name = '{{{ model.name_dotted }}}'
     {{% endif %}}
