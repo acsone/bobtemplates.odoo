@@ -33,7 +33,7 @@ def _delete_file(configurator, *args):
     """ remove file and remove it's directories if empty """
     path = os.path.join(configurator.target_directory, *args)
     os.remove(path)
-    for i in range(len(args) - 1):
+    for i in range(1, len(args)):
         path = os.path.join(configurator.target_directory, *args[:-i])
         try:
             os.rmdir(path)
