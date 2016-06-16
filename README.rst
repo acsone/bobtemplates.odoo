@@ -52,6 +52,12 @@ add a new model, with associated views, demo data, and acl:
 
     mrbob bobtemplates.odoo:model
 
+Add a test class:
+
+  .. code:: shell
+
+    mrbob bobtemplates.odoo:test
+
 Tip: read the `mr.bob user guide
 <http://mrbob.readthedocs.io/en/latest/userguide.html>`_.
 In particular it explain how to set default values to avoid
