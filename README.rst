@@ -11,11 +11,12 @@ bobtemplates.odoo
 <https://mrbob.readthedocs.io/en/latest/>`_
 templates to use when developing Odoo addons.
 
-It provides the following templates
+It provides the following templates:
 
-  * ``addon``: create an addon skeletton
-  * ``model``: an Odoo model with accompanying form, tree, action, menu and
-    basic ACL.
+  * ``addon``: an addon skeletton
+  * ``model``: an Odoo model with accompanying form, tree, action, menu,
+   demo data and ACL
+  * ``test``: a test class
 
 The following are candidates (pull requests welcome):
 
@@ -72,6 +73,10 @@ Author:
   * Stéphane Bidoul (`ACSONE <http://acsone.eu/>`_)
 
 Inspired by https://github.com/plone/bobtemplates.plone.
+
+Contributors:
+
+  * Olivier Laurent (`ACSONE <http://acsone.eu/>`_)
 
 Maintainer
 ----------

@@ -17,8 +17,12 @@ def _dotted_to_underscored(dotted):
     return dotted.replace('.', '_')
 
 
-def _dotted_to_camelwords(underscored):
-    return ' '.join([s.capitalize() for s in underscored.split('.')])
+def _dotted_to_camelwords(dotted):
+    return ' '.join([s.capitalize() for s in dotted.split('.')])
+
+
+def _underscored_to_camelcased(underscored):
+    return ''.join([s.capitalize() for s in underscored.split('_')])
 
 
 def _underscored_to_camelwords(underscored):
@@ -62,6 +66,10 @@ def _add_local_import(configurator, package, module):
         open(init_path, 'a').write(import_string + '\n')
 
 
+#
+# model hooks
+#
+
 def post_question_model_name_dotted(configurator, question, answer):
     if '.' not in answer:
         raise ValidationError('Name must contain a dot')
@@ -100,8 +108,29 @@ def post_render_model(configurator):
 
     show_message(configurator)
 
+#
+# addon hooks
+#
 
 def post_question_addon_name(configurator, question, answer):
     configurator.variables['addon.name_camelwords'] = \
         _underscored_to_camelwords(answer)
     return answer
+
+#
+# test hooks
+#
+
+def post_question_test_name_underscored(configurator, question, answer):
+    configurator.variables['test.name_camelcased'] = \
+        _underscored_to_camelcased(answer)
+    return answer
+
+def pre_render_test(configurator):
+    _load_manifest(configurator)  # check manifest is present
+
+
+def post_render_test(configurator):
+    # add new test import in __init__.py
+    _add_local_import(configurator, 'tests',
+                      configurator.variables['test.name_underscored'])
