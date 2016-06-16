@@ -16,6 +16,10 @@ def _dotted_to_underscored(dotted):
     return dotted.replace('.', '_')
 
 
+def _dotted_to_camelwords(underscored):
+    return ' '.join([s.capitalize() for s in underscored.split('.')])
+
+
 def _underscored_to_camelwords(underscored):
     return ' '.join([s.capitalize() for s in underscored.split('_')])
 
@@ -27,6 +31,8 @@ def post_question_model_name_dotted(configurator, question, answer):
         _dotted_to_underscored(answer)
     configurator.variables['model.name_camelcased'] = \
         _dotted_to_camelcased(answer)
+    configurator.variables['model.name_camelwords'] = \
+        _dotted_to_camelwords(answer)
     return answer
 
 

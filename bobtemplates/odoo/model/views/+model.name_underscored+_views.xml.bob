@@ -13,7 +13,6 @@
         <field name="inherit_id" ref="TODO othermodule.form_view"/>
 {{% endif %}}
         <field name="arch" type="xml">
-            <!-- TODO -->
 {{% if not model.inherit %}}
             <form>
                 <header>
@@ -21,23 +20,32 @@
                 </header>
                 <sheet>
                     <!-- TODO -->
+                    <field name="name"/>
                 </sheet>
                 <div class="oe_chatter"></div>
             </form>
+{{% else %}}
+            <!-- TODO -->
 {{% endif %}}
         </field>
     </record>
 {{% endif %}}
 
-{{% if model.view_filter %}}
-    <record model="ir.ui.view" id="{{{ model.name_underscored }}}_filter_view">
-        <field name="name">{{{ model.name_dotted }}}.filter (in {{{ addon.name }}})</field>
+{{% if model.view_search %}}
+    <record model="ir.ui.view" id="{{{ model.name_underscored }}}_search_view">
+        <field name="name">{{{ model.name_dotted }}}.search (in {{{ addon.name }}})</field>
         <field name="model">{{{ model.name_dotted }}}</field>
 {{% if model.inherit %}}
-        <field name="inherit_id" ref="TODO othermodule.filter_view"/>
+        <field name="inherit_id" ref="TODO othermodule.search_view"/>
 {{% endif %}}
         <field name="arch" type="xml">
+{{% if not model.inherit %}}
+            <search>
+                <!-- TODO -->
+            </search>
+{{% else %}}
             <!-- TODO -->
+{{% endif %}}
         </field>
     </record>
 {{% endif %}}
@@ -50,22 +58,32 @@
         <field name="inherit_id" ref="TODO othermodule.tree_view"/>
 {{% endif %}}
         <field name="arch" type="xml">
+{{% if not model.inherit %}}
+            <tree>
+                <!-- TODO -->
+                <field name="name"/>
+            </tree>
+{{% else %}}
             <!-- TODO -->
+{{% endif %}}
         </field>
     </record>
 {{% endif %}}
 
 {{% if model.view_menu %}}
-    <record model="ir.ui.actions.act_window" id="{{{ model.name_underscored }}}_act_window">
-        <field name="name">{{{ model.name_dotted }}}.act_window (in {{{ addon.name }}})</field>
+    <record model="ir.actions.act_window" id="{{{ model.name_underscored }}}_act_window">
+        <field name="name">{{{ model.name_camelwords }}}</field> <!-- TODO -->
         <field name="res_model">{{{ model.name_dotted }}}</field>
         <field name="view_mode">tree,form</field>
+        <field name="view_type">form</field>
     </record>
 
-    <menuitem id="{{{ model.name_underscored }}}_menu"
-        parent="TODO xmlid of parent menu"
-        action="{{{ model.name_underscored }}}_act_window"
-    />
+    <record model="ir.ui.menu" id="{{{ model.name_underscored }}}_menu">
+        <!--field name="name">TODO same as action by default</field-->
+        <field name="parent_id" ref="xmlid of parent menu"/> <!-- TODO -->
+        <field name="action" ref="{{{ model.name_underscored }}}_act_window"/>
+        <field name="sequence" eval="16"/> <!-- TODO -->
+    </record>
 {{% endif %}}
 
 </data>

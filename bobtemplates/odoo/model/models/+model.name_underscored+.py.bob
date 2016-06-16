@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright {{ copyright.year }} {{ copyright.name }}
+# Copyright {{{ copyright.year }}} {{{ copyright.name }}}
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from openerp import models, fields, api, _
@@ -7,8 +7,9 @@ from openerp import models, fields, api, _
 
 class {{{ model.name_camelcased }}}(models.Model):
 
-    {{% if model.inherit: %}}
+{{% if model.inherit: %}}
     _inherit = '{{{ model.name_dotted }}}'
-    {{% else %}}
+{{% else %}}
     _name = '{{{ model.name_dotted }}}'
-    {{% endif %}}
+    _description = '{{{ model.name_camelwords }}}'  # TODO
+{{% endif %}}
