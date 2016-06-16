@@ -5,6 +5,10 @@ Changes
 .. ----------
 .. -
 
+1.0.0b2 (unreleased)
+--------------------
+- ...
+
 1.0.0b1 (2016-06-16)
 --------------------
 - add post render message inviting the user to add the generated xml
