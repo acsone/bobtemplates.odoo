@@ -5,16 +5,24 @@
 <openerp>
 <data>
 
+{{% if model.view_form %}}
   <record id="{{{ model.name_underscored }}}_form_view" model="ir.ui.view">
     <field name="name">{{{ model.name_dotted }}} form view</field>
     <field name="model">{{{ model.name_dotted }}}</field>
-    {{% if model.inherit %}}
+{{% if model.inherit %}}
     <field name="inherit_id" ref="othermodule.form_view"/> <!-- TODO -->
-    {{% endif %}}
+{{% endif %}}
     <field name="arch" type="xml">
         <!-- TODO -->
     </field>
   </record>
+{{% endif %}}
+
+{{% if model.view_tree %}}
+{{% endif %}}
+
+{{% if model.view_menu %}}
+{{% endif %}}
 
 </data>
 </openerp>

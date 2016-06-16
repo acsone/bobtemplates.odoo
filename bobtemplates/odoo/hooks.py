@@ -33,10 +33,6 @@ def post_question_model_name_dotted(configurator, question, answer):
 def post_render_model(configurator):
     init_path = os.path.join(configurator.target_directory,
                              'models', '__init__.py')
-    #if os.path.exists(init_path):
-    #    mode = 'a'
-    #else:
-    #    mode = 'w'
     with open(init_path, 'a') as init_file:
         init_file.write('from . import {}\n'.format(
             configurator.variables['model.name_underscored']))
