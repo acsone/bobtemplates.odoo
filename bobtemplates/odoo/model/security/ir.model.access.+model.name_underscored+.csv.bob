@@ -1,2 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_{{{ model.name_underscored }}}_rule_name,{{{ model.name_dotted }}} rule name,model_{{{ model.name_underscored }}},base.group_user,1,0,0,0

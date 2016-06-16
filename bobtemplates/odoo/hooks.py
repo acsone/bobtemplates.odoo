@@ -24,6 +24,27 @@ def _underscored_to_camelwords(underscored):
     return ' '.join([s.capitalize() for s in underscored.split('_')])
 
 
+def _open_file(mode, configurator, *args):
+    path = os.path.join(configurator.target_directory, *args)
+    return open(path, mode)
+
+
+def _delete_file(configurator, *args):
+    path = os.path.join(configurator.target_directory, *args)
+    try:
+        os.remove(path)
+    except OSError:
+        pass
+
+
+def _delete_dir(configurator, *args):
+    path = os.path.join(configurator.target_directory, *args)
+    try:
+        os.rmdir(path)
+    except OSError:
+        pass
+
+
 def post_question_model_name_dotted(configurator, question, answer):
     if '.' not in answer:
         raise ValidationError('Name must contain a dot')
@@ -43,25 +64,18 @@ def pre_render_model(configurator):
 
 def post_render_model(configurator):
     # add model import in __init__.py
-    init_path = os.path.join(configurator.target_directory,
-                             'models', '__init__.py')
-    with open(init_path, 'a') as init_file:
+    with _open_file('a', configurator, 'models', '__init__.py') as init_file:
         init_file.write('from . import {}\n'.format(
             configurator.variables['model.name_underscored']))
-    # acl file
-    security_path = os.path.join(configurator.target_directory, 'security')
-    security_csv_name = 'ir.model.access.' + \
-        configurator.variables['model.name_underscored'] + '.csv'
+    # remove ACL
     if not configurator.variables['model.acl']:
-        os.remove(os.path.join(security_path, security_csv_name))
-        try:
-            os.rmdir(security_path)
-        except OSError:
-            # not empty, probably
-            pass
-    else:
-        print("Do not forget to add {} "
-              "in __openerp__.py data section.".format(
-                  "security/" + security_csv_name))
+        _delete_file(configurator, 'security',
+                     configurator.variables['model.name_underscored'] + '.xml')
+        _delete_dir(configurator, 'security')
+    # remove demo data
+    if not configurator.variables['model.demo_data']:
+        _delete_file(configurator, 'demo',
+                     configurator.variables['model.name_underscored'] + '.xml')
+        _delete_dir(configurator, 'demo')
 
     show_message(configurator)
