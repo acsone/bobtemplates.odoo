@@ -108,26 +108,28 @@ def post_render_model(configurator):
 
     show_message(configurator)
 
+
 #
 # addon hooks
 #
 
-def post_question_addon_name(configurator, question, answer):
-    configurator.variables['addon.name_camelwords'] = \
-        _underscored_to_camelwords(answer)
-    return answer
+
+def pre_render_addon(configurator):
+    variables = configurator.variables
+    variables['addon.name_camelwords'] = \
+        _underscored_to_camelwords(variables['addon.name'])
+
 
 #
 # test hooks
 #
 
-def post_question_test_name_underscored(configurator, question, answer):
-    configurator.variables['test.name_camelcased'] = \
-        _underscored_to_camelcased(answer)
-    return answer
 
 def pre_render_test(configurator):
     _load_manifest(configurator)  # check manifest is present
+    variables = configurator.variables
+    variables['test.name_camelcased'] = \
+        _underscored_to_camelcased(variables['test.name_underscored'])
 
 
 def post_render_test(configurator):
