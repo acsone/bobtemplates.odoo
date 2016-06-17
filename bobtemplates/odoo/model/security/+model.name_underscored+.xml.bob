@@ -3,7 +3,7 @@
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 
 <openerp>
-<data noupdate="1">
+<data>
 
     <record model="ir.model.access" id="{{{ model.name_underscored }}}_access_name"> <!-- TODO acl id -->
         <field name="name">{{{ model.name_dotted }}} access name</field> <!-- TODO acl name -->

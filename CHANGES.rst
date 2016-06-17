@@ -8,6 +8,8 @@ Changes
 1.0.0b2 (unreleased)
 --------------------
 - addon template: add optional OCA mode (author, README.rst and icon.svg)
+- model template: improve order of import in the model file
+- model template: avoid to set ir.model.access data as non updatable record
 
 1.0.0b1 (2016-06-16)
 --------------------
