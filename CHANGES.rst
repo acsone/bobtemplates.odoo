@@ -7,7 +7,7 @@ Changes
 
 1.0.0b3 (unreleased)
 --------------------
-- ...
+- model template: auto-add view, demo data and acl in addon manifest
 
 1.0.0b2 (2016-06-17)
 --------------------
