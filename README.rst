@@ -62,7 +62,7 @@ Add a test class:
 
 Tip: read the `mr.bob user guide
 <http://mrbob.readthedocs.io/en/latest/userguide.html>`_.
-In particular it explain how to set default values to avoid
+In particular it explains how to set default values to avoid
 retyping the same answers at each run (such as the copyright
 author).
 
