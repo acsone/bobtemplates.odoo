@@ -7,7 +7,7 @@ Changes
 
 1.0.0b2 (unreleased)
 --------------------
-- addon template: add optional OCA README.rst and icon.svg
+- addon template: add optional OCA mode (author, README.rst and icon.svg)
 
 1.0.0b1 (2016-06-16)
 --------------------
