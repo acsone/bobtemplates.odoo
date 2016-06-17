@@ -8,7 +8,7 @@
         {{{ addon.summary }}}""",
     'version': '{{{ addon.version }}}',
     'license': 'AGPL-3',
-    'author': '{{{ copyright.name }}}',
+    'author': '{{{ copyright.name }}}{{% if addon.oca %}},Odoo Community Association (OCA){{% endif %}}',
 {{% if copyright.website %}}
     'website': '{{{ copyright.website }}}',
 {{% endif %}}
