@@ -7,7 +7,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='bobtemplates.odoo',
-    version='1.0.0b2.dev0',
+    version='1.0.0b2',
     description='mr.bob templates for Odoo projects',
     long_description='\n'.join((
         open('README.rst').read(),

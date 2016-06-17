@@ -5,7 +5,7 @@ Changes
 .. ----------
 .. -
 
-1.0.0b2 (unreleased)
+1.0.0b2 (2016-06-17)
 --------------------
 - addon template: add optional OCA mode (author, README.rst and icon.svg)
 - model template: improve order of import in the model file
