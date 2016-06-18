@@ -75,7 +75,6 @@
         <field name="name">{{{ model.name_camelwords }}}</field> <!-- TODO -->
         <field name="res_model">{{{ model.name_dotted }}}</field>
         <field name="view_mode">tree,form</field>
-        <field name="view_type">form</field>
     </record>
 
     <record model="ir.ui.menu" id="{{{ model.name_underscored }}}_menu">
