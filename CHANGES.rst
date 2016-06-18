@@ -7,13 +7,14 @@ Changes
 
 1.0.0b3 (unreleased)
 --------------------
-- model template: auto-add view, demo data and acl in addon manifest
+- model: auto-add view, demo data and acl in addon manifest
+- addon: put summary in description field if there is no README.rst
 
 1.0.0b2 (2016-06-17)
 --------------------
-- addon template: add optional OCA mode (author, README.rst and icon.svg)
-- model template: improve order of import in the model file
-- model template: avoid to set ir.model.access data as non updatable record
+- addon: add optional OCA mode (author, README.rst and icon.svg)
+- model: improve order of import in the model file
+- model: avoid to set ir.model.access data as non updatable record
 
 1.0.0b1 (2016-06-16)
 --------------------
