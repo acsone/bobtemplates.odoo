@@ -9,6 +9,7 @@ Changes
 --------------------
 - model: auto-add view, demo data and acl in addon manifest
 - addon: put summary in description field if there is no README.rst
+- model: menu name is mandatory when creating menu with a record entry
 
 1.0.0b2 (2016-06-17)
 --------------------

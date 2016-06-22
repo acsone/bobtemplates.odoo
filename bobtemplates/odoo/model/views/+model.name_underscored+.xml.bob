@@ -78,7 +78,7 @@
     </record>
 
     <record model="ir.ui.menu" id="{{{ model.name_underscored }}}_menu">
-        <!--field name="name">TODO same as action by default</field-->
+        <field name="name">{{{ model.name_camelwords }}}</field>
         <field name="parent_id" ref="xmlid of parent menu"/> <!-- TODO -->
         <field name="action" ref="{{{ model.name_underscored }}}_act_window"/>
         <field name="sequence" eval="16"/> <!-- TODO -->
