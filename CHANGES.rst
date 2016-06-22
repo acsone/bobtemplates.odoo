@@ -7,15 +7,15 @@ Changes
 
 1.0.0b3 (unreleased)
 --------------------
-- model: auto-add view, demo data and acl in addon manifest
-- addon: put summary in description field if there is no README.rst
-- model: menu name is mandatory when creating menu with a record entry
+- [IMP] model: auto-add view, demo data and acl in addon manifest
+- [IMP] addon: put summary in description field if there is no README.rst
+- [FIX] model: menu name is mandatory when creating menu with a record entry
 
 1.0.0b2 (2016-06-17)
 --------------------
-- addon: add optional OCA mode (author, README.rst and icon.svg)
-- model: improve order of import in the model file
-- model: avoid to set ir.model.access data as non updatable record
+- [ADD] addon: add optional OCA mode (author, README.rst and icon.svg)
+- [IMP] model: improve order of import in the model file
+- [FIX] model: avoid to set ir.model.access data as non updatable record
 
 1.0.0b1 (2016-06-16)
 --------------------
