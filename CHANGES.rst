@@ -12,6 +12,7 @@ Changes
 - [FIX] model: menu name is mandatory when creating menu with a record entry
 - [IMP] model: do not generate action view_type (which is mostly obsolete)
 - [IMP] model: add model and context in action
+- [ADD] wizard template
 
 1.0.0b2 (2016-06-17)
 --------------------

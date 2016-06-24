@@ -1,0 +1,30 @@
+# -*- coding: utf-8 -*-
+# Copyright {{{ copyright.year }}} {{{ copyright.name }}}
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+
+from openerp import api, fields, models, _
+
+
+class {{{ model.name_camelcased }}}(models.TransientModel):
+
+{{% if model.inherit: %}}
+    _inherit = '{{{ model.name_dotted }}}'
+{{% else %}}
+    _name = '{{{ model.name_dotted }}}'
+
+    name = fields.Char()
+
+    @api.multi()
+    def doit(self):
+        for wizard in self:
+            # TODO
+            pass
+        action = {
+            'type': 'ir.action.act_window',
+            'name': 'Action Name',  # TODO
+            'res_model': 'result.model',  # TODO
+            'domain': [('id', '=', result_ids)],  # TODO
+            'view_mode': 'form,tree',
+        }
+        return action
+{{% endif %}}

@@ -19,12 +19,12 @@ It provides the following templates:
   * ``model``: an Odoo model with accompanying form, tree, action, menu,
     demo data and ACL
   * ``test``: a test class
+  * ``wizard``: a wizard with transient model, view and action
 
 The following are candidates (pull requests welcome):
 
   * ``report``
   * ``controller``
-  * ``wizard``
   * ``widget``
 
 Install

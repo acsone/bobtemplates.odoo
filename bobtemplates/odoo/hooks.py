@@ -171,3 +171,35 @@ def post_render_test(configurator):
                       configurator.variables['test.name_underscored'])
     # show message if any
     show_message(configurator)
+
+
+#
+# wizard hooks
+#
+
+def pre_render_wizard(configurator):
+    _load_manifest(configurator)  # check manifest is present
+    variables = configurator.variables
+    variables['model.name_underscored'] = \
+        _dotted_to_underscored(variables['model.name_dotted'])
+    variables['model.name_camelcased'] = \
+        _dotted_to_camelcased(variables['model.name_dotted'])
+    variables['model.name_camelwords'] = \
+        _dotted_to_camelwords(variables['model.name_dotted'])
+    variables['addon.name'] = \
+        os.path.basename(os.path.normpath(configurator.target_directory))
+
+
+def post_render_wizard(configurator):
+    variables = configurator.variables
+    # make sure the models package is imported from the addon root
+    _add_local_import(configurator, '',
+                      'wizards')
+    # add new model import in __init__.py
+    _add_local_import(configurator, 'wizards',
+                      variables['model.name_underscored'])
+    # views
+    wizard_path = 'wizards/{}.xml'.format(variables['model.name_underscored'])
+    _insert_manifest_item(configurator, 'data', wizard_path)
+    # show message if any
+    show_message(configurator)
