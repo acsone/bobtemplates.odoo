@@ -5,12 +5,12 @@
 from openerp import api, fields, models, _
 
 
-class {{{ model.name_camelcased }}}(models.TransientModel):
+class {{{ wizard.name_camelcased }}}(models.TransientModel):
 
-{{% if model.inherit: %}}
-    _inherit = '{{{ model.name_dotted }}}'
+{{% if wizard.inherit: %}}
+    _inherit = '{{{ wizard.name_dotted }}}'
 {{% else %}}
-    _name = '{{{ model.name_dotted }}}'
+    _name = '{{{ wizard.name_dotted }}}'
 
     name = fields.Char()
 

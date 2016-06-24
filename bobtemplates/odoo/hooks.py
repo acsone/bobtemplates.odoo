@@ -193,35 +193,35 @@ def post_render_test(configurator):
 
 def _wizard_has_view(variables):
     return (
-        variables['model.wizard_form'] or
-        variables['model.wizard_action'] or
-        variables['model.wizard_menu']
+        variables['wizard.view_form'] or
+        variables['wizard.view_action'] or
+        variables['wizard.view_menu']
     )
 
 
 def pre_render_wizard(configurator):
     _load_manifest(configurator)  # check manifest is present
     variables = configurator.variables
-    variables['model.name_underscored'] = \
-        _dotted_to_underscored(variables['model.name_dotted'])
-    variables['model.name_camelcased'] = \
-        _dotted_to_camelcased(variables['model.name_dotted'])
-    variables['model.name_camelwords'] = \
-        _dotted_to_camelwords(variables['model.name_dotted'])
+    variables['wizard.name_underscored'] = \
+        _dotted_to_underscored(variables['wizard.name_dotted'])
+    variables['wizard.name_camelcased'] = \
+        _dotted_to_camelcased(variables['wizard.name_dotted'])
+    variables['wizard.name_camelwords'] = \
+        _dotted_to_camelwords(variables['wizard.name_dotted'])
     variables['addon.name'] = \
         os.path.basename(os.path.normpath(configurator.target_directory))
 
 
 def post_render_wizard(configurator):
     variables = configurator.variables
-    # make sure the models package is imported from the addon root
+    # make sure the wizards package is imported from the addon root
     _add_local_import(configurator, '',
                       'wizards')
-    # add new model import in __init__.py
+    # add new wizard import in __init__.py
     _add_local_import(configurator, 'wizards',
-                      variables['model.name_underscored'])
+                      variables['wizard.name_underscored'])
     # views
-    view_path = 'wizards/{}.xml'.format(variables['model.name_underscored'])
+    view_path = 'wizards/{}.xml'.format(variables['wizard.name_underscored'])
     if _wizard_has_view(variables):
         _insert_manifest_item(configurator, 'data', view_path)
     else:

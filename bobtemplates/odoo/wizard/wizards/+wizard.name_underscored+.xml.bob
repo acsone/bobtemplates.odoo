@@ -5,16 +5,16 @@
 <openerp>
 <data>
 
-{{% if model.wizard_form %}}
-    <record model="ir.ui.view" id="{{{ model.name_underscored }}}_form_view">
-        <field name="name">{{{ model.name_dotted }}}.form (in {{{ addon.name }}})</field>
-        <field name="model">{{{ model.name_dotted }}}</field>
-{{% if model.inherit %}}
+{{% if wizard.view_form %}}
+    <record model="ir.ui.view" id="{{{ wizard.name_underscored }}}_form_view">
+        <field name="name">{{{ wizard.name_dotted }}}.form (in {{{ addon.name }}})</field>
+        <field name="model">{{{ wizard.name_dotted }}}</field>
+{{% if wizard.inherit %}}
         <field name="inherit_id" ref="TODO othermodule.wizard"/>
 {{% endif %}}
         <field name="arch" type="xml">
-{{% if not model.inherit %}}
-            <form string="{{{ model.name_camelwords }}}">
+{{% if not wizard.inherit %}}
+            <form string="{{{ wizard.name_camelwords }}}">
                 <sheet>
                     <!-- TODO -->
                     <group>
@@ -39,20 +39,20 @@
     </record>
 {{% endif %}}
 
-{{% if model.wizard_action %}}
-    <record model="ir.actions.act_window" id="{{{ model.name_underscored }}}_act_window">
-        <field name="name">{{{ model.name_camelwords }}}</field> <!-- TODO -->
-        <field name="res_model">{{{ model.name_dotted }}}</field>
-        <field name="wizard_mode">form</field>
+{{% if wizard.view_action %}}
+    <record model="ir.actions.act_window" id="{{{ wizard.name_underscored }}}_act_window">
+        <field name="name">{{{ wizard.name_camelwords }}}</field> <!-- TODO -->
+        <field name="res_model">{{{ wizard.name_dotted }}}</field>
+        <field name="view_mode">form</field>
         <field name="context">{}</field>
     </record>
 {{% endif %}}
 
-{{% if model.wizard_menu %}}
-    <record model="ir.ui.menu" id="{{{ model.name_underscored }}}_menu">
-        <field name="name">{{{ model.name_camelwords }}}</field>
+{{% if wizard.view_menu %}}
+    <record model="ir.ui.menu" id="{{{ wizard.name_underscored }}}_menu">
+        <field name="name">{{{ wizard.name_camelwords }}}</field>
         <field name="parent_id" ref="xmlid of parent menu"/> <!-- TODO -->
-        <field name="action" ref="{{{ model.name_underscored }}}_act_window"/>
+        <field name="action" ref="{{{ wizard.name_underscored }}}_act_window"/>
         <field name="sequence" eval="16"/> <!-- TODO -->
     </record>
 {{% endif %}}
