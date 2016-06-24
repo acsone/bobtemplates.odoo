@@ -12,4 +12,6 @@ class {{{ model.name_camelcased }}}(models.Model):
 {{% else %}}
     _name = '{{{ model.name_dotted }}}'
     _description = '{{{ model.name_camelwords }}}'  # TODO
+
+    name = fields.Char()
 {{% endif %}}
