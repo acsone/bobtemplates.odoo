@@ -103,3 +103,19 @@ class OdooTemplatesTest(BaseTemplateTest):
                 self.addon + '/tests/__init__.py',
             ]
         )
+
+    def test_odoo_wizard(self):
+        self._create_addon()
+        self.template = 'wizard'
+        self.answers_file = 'test_odoo_wizard_answers.ini'
+        self.target_dir = 'addon_foo'
+        result = self.create_template()
+        self.assertItemsEqual(
+            result.files_created.keys(),
+            [
+                self.addon + '/wizards',
+                self.addon + '/wizards/foo_wizard.py',
+                self.addon + '/wizards/__init__.py',
+                self.addon + '/wizards/foo_wizard.xml',
+            ]
+        )
