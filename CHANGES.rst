@@ -7,13 +7,14 @@ Changes
 
 1.0.0b3 (unreleased)
 --------------------
+- [ADD] wizard template
 - [IMP] model: auto-add view, demo data and acl in addon manifest
 - [IMP] addon: put summary in description field if there is no README.rst
-- [FIX] model: menu name is mandatory when creating menu with a record entry
 - [IMP] model: do not generate action view_type (which is mostly obsolete)
 - [IMP] model: add model and context in action
 - [IMP] model: add example field when not inherited
-- [ADD] wizard template
+- [IMP] model: add default group in form view
+- [FIX] model: menu name is mandatory when creating menu with a record entry
 
 1.0.0b2 (2016-06-17)
 --------------------

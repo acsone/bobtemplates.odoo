@@ -20,7 +20,9 @@
                 </header>
                 <sheet>
                     <!-- TODO -->
-                    <field name="name"/>
+                    <group>
+                        <field name="name"/>
+                    </group>
                 </sheet>
                 <div class="oe_chatter"></div>
             </form>
