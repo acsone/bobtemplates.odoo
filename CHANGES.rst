@@ -14,6 +14,7 @@ Changes
 - [IMP] model: add model and context in action
 - [IMP] model: add example field when not inherited
 - [IMP] model: add default group in form view
+- [IMP] model: do not generate an empty view xml file
 - [FIX] model: menu name is mandatory when creating menu with a record entry
 
 1.0.0b2 (2016-06-17)

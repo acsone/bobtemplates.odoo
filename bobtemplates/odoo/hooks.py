@@ -86,6 +86,16 @@ def _rm_suffix(suffix, configurator, path):
 # model hooks
 #
 
+
+def _model_has_view(variables):
+    return (
+        variables['model.view_form'] or
+        variables['model.view_tree'] or
+        variables['model.view_search'] or
+        variables['model.view_menu']
+    )
+
+
 def pre_render_model(configurator):
     _load_manifest(configurator)  # check manifest is present
     variables = configurator.variables
@@ -109,7 +119,10 @@ def post_render_model(configurator):
                       variables['model.name_underscored'])
     # views
     view_path = 'views/{}.xml'.format(variables['model.name_underscored'])
-    _insert_manifest_item(configurator, 'data', view_path)
+    if _model_has_view(variables):
+        _insert_manifest_item(configurator, 'data', view_path)
+    else:
+        _delete_file(configurator, view_path)
     # ACL
     acl_path = 'security/{}.xml'.format(variables['model.name_underscored'])
     if variables['model.acl']:
