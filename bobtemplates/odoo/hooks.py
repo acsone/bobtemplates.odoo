@@ -190,6 +190,15 @@ def post_render_test(configurator):
 # wizard hooks
 #
 
+
+def _wizard_has_view(variables):
+    return (
+        variables['model.wizard_form'] or
+        variables['model.wizard_action'] or
+        variables['model.wizard_menu']
+    )
+
+
 def pre_render_wizard(configurator):
     _load_manifest(configurator)  # check manifest is present
     variables = configurator.variables
@@ -212,7 +221,10 @@ def post_render_wizard(configurator):
     _add_local_import(configurator, 'wizards',
                       variables['model.name_underscored'])
     # views
-    wizard_path = 'wizards/{}.xml'.format(variables['model.name_underscored'])
-    _insert_manifest_item(configurator, 'data', wizard_path)
+    view_path = 'wizards/{}.xml'.format(variables['model.name_underscored'])
+    if _wizard_has_view(variables):
+        _insert_manifest_item(configurator, 'data', view_path)
+    else:
+        _delete_file(configurator, view_path)
     # show message if any
     show_message(configurator)
