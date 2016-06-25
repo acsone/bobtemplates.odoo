@@ -11,7 +11,7 @@ Changes
 - [IMP] model: auto-add view, demo data and acl in addon manifest
 - [IMP] addon: put summary in description field if there is no README.rst
 - [IMP] model: do not generate action view_type (which is mostly obsolete)
-- [IMP] model: add model and context in action
+- [IMP] model: add domain and context in action
 - [IMP] model: add example field when not inherited
 - [IMP] model: add default group in form view
 - [IMP] model: do not generate an empty view xml file
