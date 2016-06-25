@@ -5,7 +5,7 @@ Changes
 .. ----------
 .. -
 
-1.0.0b3 (unreleased)
+1.0.0b3 (2016-06-25)
 --------------------
 - [ADD] wizard template
 - [IMP] model: auto-add view, demo data and acl in addon manifest
