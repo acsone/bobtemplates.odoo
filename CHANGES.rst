@@ -7,7 +7,7 @@ Changes
 
 1.0.0b4 (unreleased)
 --------------------
-- 
+- [IMP] wizard: improve form view template
 
 1.0.0b3 (2016-06-25)
 --------------------
