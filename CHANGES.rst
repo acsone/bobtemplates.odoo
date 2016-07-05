@@ -8,6 +8,7 @@ Changes
 1.0.0b4 (unreleased)
 --------------------
 - [IMP] wizard: improve form view template
+- [IMP] wizard : use new target in wizard action
 
 1.0.0b3 (2016-06-25)
 --------------------
