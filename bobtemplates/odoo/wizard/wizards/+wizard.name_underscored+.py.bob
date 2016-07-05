@@ -14,7 +14,7 @@ class {{{ wizard.name_camelcased }}}(models.TransientModel):
 
     name = fields.Char()
 
-    @api.multi()
+    @api.multi
     def doit(self):
         for wizard in self:
             # TODO
