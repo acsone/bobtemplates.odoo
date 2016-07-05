@@ -10,6 +10,7 @@ Changes
 - [IMP] wizard: improve form view template
 - [IMP] wizard: use 'new' target in wizard action
 - [ADD] wizard: add action in More/Action menu
+- [FIX] wizard: remove parenthesis in multi decorator that cause crash in Odoo 8.0
 
 1.0.0b3 (2016-06-25)
 --------------------
