@@ -43,6 +43,16 @@
         <field name="res_model">{{{ wizard.name_dotted }}}</field>
         <field name="view_mode">form</field>
         <field name="context">{}</field>
+        <field name="target">new</field>
+    </record>
+{{% endif %}}
+
+{{% if wizard.action_multi %}}
+    <record model="ir.values" id="{{{ wizard.name_underscored }}}_act_multi">
+        <field name="name">{{{ wizard.name_camelwords }}}</field><!-- TODO -->
+        <field name="key2">client_action_multi</field>
+        <field name="value" eval="'ir.actions.act_window,' +str(ref('{{{ wizard.name_underscored }}}_act_window'))" />
+        <field name="model">source.model</field><!-- TODO -->
     </record>
 {{% endif %}}
 
