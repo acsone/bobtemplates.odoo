@@ -195,6 +195,7 @@ def _wizard_has_view(variables):
     return (
         variables['wizard.view_form'] or
         variables['wizard.view_action'] or
+        variables['wizard.action_multi'] or
         variables['wizard.view_menu']
     )
 

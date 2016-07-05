@@ -9,6 +9,7 @@ Changes
 --------------------
 - [IMP] wizard: improve form view template
 - [IMP] wizard : use new target in wizard action
+- [ADD] wizard : add generation of multi action for wizard template
 
 1.0.0b3 (2016-06-25)
 --------------------
