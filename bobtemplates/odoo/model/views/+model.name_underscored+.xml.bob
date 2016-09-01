@@ -4,10 +4,10 @@
 
 {{% if odoo.version < 9 %}}
 <openerp>
-<data>
 {{% else %}}
 <odoo>
 {{% endif %}}
+<data>
 
 {{% if model.view_form %}}
     <record model="ir.ui.view" id="{{{ model.name_underscored }}}_form_view">
@@ -93,8 +93,8 @@
     </record>
 {{% endif %}}
 
-{{% if odoo.version < 9 %}}
 </data>
+{{% if odoo.version < 9 %}}
 </openerp>
 {{% else %}}
 </odoo>
