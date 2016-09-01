@@ -3,7 +3,7 @@ Changes
 
 .. Future (?)
 .. ----------
-.. -
+.. -zz
 
 1.0.0b4 (unreleased)
 --------------------
@@ -11,6 +11,7 @@ Changes
 - [IMP] wizard: use 'new' target in wizard action
 - [ADD] wizard: add action in More/Action menu
 - [FIX] wizard: remove parenthesis in multi decorator that cause crash in Odoo 8.0
+- [FIX] addon: replace icon.svg.oca by icon.png.oca
 
 1.0.0b3 (2016-06-25)
 --------------------
