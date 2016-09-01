@@ -64,7 +64,7 @@ class OdooTemplatesTest(BaseTemplateTest):
                 self.addon + '/README.rst',
                 self.addon + '/static',
                 self.addon + '/static/description',
-                self.addon + '/static/description/icon.svg',
+                self.addon + '/static/description/icon.png',
             ]
         )
 
