@@ -156,12 +156,12 @@ def post_render_addon(configurator):
         _rm_suffix('.oca', configurator, variables['addon.name'] +
                    '/README.rst.oca')
         _rm_suffix('.oca', configurator, variables['addon.name'] +
-                   '/static/description/icon.svg.oca')
+                   '/static/description/icon.png.oca')
     else:
         _delete_file(configurator, variables['addon.name'] +
                      '/README.rst.oca')
         _delete_file(configurator, variables['addon.name'] +
-                     '/static/description/icon.svg.oca')
+                     '/static/description/icon.png.oca')
     # show message if any
     show_message(configurator)
 
