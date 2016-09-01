@@ -3,15 +3,15 @@ Changes
 
 .. Future (?)
 .. ----------
-.. -zz
+.. -
 
 1.0.0b4 (unreleased)
 --------------------
 - [IMP] wizard: improve form view template
 - [IMP] wizard: use 'new' target in wizard action
 - [ADD] wizard: add action in More/Action menu
-- [FIX] wizard: remove parenthesis in multi decorator that cause crash in Odoo 8.0
-- [FIX] addon: replace icon.svg.oca by icon.png.oca
+- [FIX] wizard: remove parenthesis in multi decorator that caused crash in Odoo 8.0
+- [FIX] addon: for OCA addons, generate icon.png instead of icon.svg
 
 1.0.0b3 (2016-06-25)
 --------------------
