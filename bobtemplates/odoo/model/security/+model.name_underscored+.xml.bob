@@ -2,7 +2,11 @@
 <!-- Copyright {{{ copyright.year }}} {{{ copyright.name }}}
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 
+{{% if odoo.version < 9 %}}
 <openerp>
+{{% else %}}
+<odoo>
+{{% endif %}}
 <data>
 
     <record model="ir.model.access" id="{{{ model.name_underscored }}}_access_name"> <!-- TODO acl id -->
@@ -17,4 +21,8 @@
     </record>
 
 </data>
+{{% if odoo.version < 9 %}}
 </openerp>
+{{% else %}}
+</odoo>
+{{% endif %}}

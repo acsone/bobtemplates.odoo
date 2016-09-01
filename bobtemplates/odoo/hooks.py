@@ -99,6 +99,8 @@ def _model_has_view(variables):
 def pre_render_model(configurator):
     _load_manifest(configurator)  # check manifest is present
     variables = configurator.variables
+    variables['odoo.version'] = \
+        int(variables['odoo.version'])
     variables['model.name_underscored'] = \
         _dotted_to_underscored(variables['model.name_dotted'])
     variables['model.name_camelcased'] = \
@@ -203,6 +205,8 @@ def _wizard_has_view(variables):
 def pre_render_wizard(configurator):
     _load_manifest(configurator)  # check manifest is present
     variables = configurator.variables
+    variables['odoo.version'] = \
+        int(variables['odoo.version'])
     variables['wizard.name_underscored'] = \
         _dotted_to_underscored(variables['wizard.name_dotted'])
     variables['wizard.name_camelcased'] = \
