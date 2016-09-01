@@ -41,7 +41,6 @@ class BaseTemplateTest(unittest.TestCase):
 
 
 class OdooTemplatesTest(BaseTemplateTest):
-    """Tests for the `plone_addon` template."""
     template = ''
     addon = 'addon_foo'
     answers_file = ''

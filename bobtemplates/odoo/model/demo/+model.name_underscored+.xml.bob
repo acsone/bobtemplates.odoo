@@ -2,8 +2,12 @@
 <!-- Copyright {{{ copyright.year }}} {{{ copyright.name }}}
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 
+{{% if odoo.version < 9 %}}
 <openerp>
 <data noupdate="1">
+{{% else %}}
+<odoo noupdate="1">
+{{% endif %}}
 
     <!-- TODO
     <record model="{{{ model.name_dotted }}}" id="{{{ model.name_underscored }}}_demo_1">
@@ -11,5 +15,9 @@
     </record>
     -->
 
+{{% if odoo.version < 9 %}}
 </data>
 </openerp>
+{{% else %}}
+</odoo>
+{{% endif %}}

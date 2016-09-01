@@ -12,6 +12,7 @@ Changes
 - [ADD] wizard: add action in More/Action menu
 - [FIX] wizard: remove parenthesis in multi decorator that caused crash in Odoo 8.0
 - [FIX] addon: for OCA addons, generate icon.png instead of icon.svg
+- [IMP] wizard, model: use <odoo> instead of <openerp><data> for Odoo >= 9.0
 
 1.0.0b3 (2016-06-25)
 --------------------

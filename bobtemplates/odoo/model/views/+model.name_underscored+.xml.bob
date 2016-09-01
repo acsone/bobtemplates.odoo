@@ -2,8 +2,12 @@
 <!-- Copyright {{{ copyright.year }}} {{{ copyright.name }}}
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 
+{{% if odoo.version < 9 %}}
 <openerp>
 <data>
+{{% else %}}
+<odoo>
+{{% endif %}}
 
 {{% if model.view_form %}}
     <record model="ir.ui.view" id="{{{ model.name_underscored }}}_form_view">
@@ -89,5 +93,9 @@
     </record>
 {{% endif %}}
 
+{{% if odoo.version < 9 %}}
 </data>
 </openerp>
+{{% else %}}
+</odoo>
+{{% endif %}}
