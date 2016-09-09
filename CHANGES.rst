@@ -5,6 +5,10 @@ Changes
 .. ----------
 .. -
 
+1.0.1 (2016-09-09)
+------------------
+- [FIX] packaging error in 1.0.0 (removed icon.svg.oca)
+
 1.0.0 (2016-09-01)
 ------------------
 - [IMP] wizard: improve form view template
