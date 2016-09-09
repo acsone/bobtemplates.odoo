@@ -10,6 +10,7 @@ How to release
 * update changelog in CHANGES.rst
 * python setup.py check --restructuredtext
 * commit everything
+* git clean -fdx
 * make sure tests pass!
 * git tag <version>
 * git push --tags
