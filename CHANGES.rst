@@ -5,6 +5,10 @@ Changes
 .. ----------
 .. -
 
+1.1.0 (2016-10-28)
+------------------
+- [IMP] Odoo 10.0 support
+
 1.0.1 (2016-09-09)
 ------------------
 - [FIX] packaging error in 1.0.0 (removed icon.svg.oca)

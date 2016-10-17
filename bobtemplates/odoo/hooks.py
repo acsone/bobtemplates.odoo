@@ -44,7 +44,10 @@ def _open_manifest(configurator, mode='r'):
     manifest_path = os.path.join(configurator.target_directory,
                                  '__openerp__.py')
     if not os.path.exists(manifest_path):
-        raise ValidationError("{} not found".format(manifest_path))
+        manifest_path = os.path.join(configurator.target_directory,
+                                     '__manifest__.py')
+        if not os.path.exists(manifest_path):
+            raise ValidationError("{} not found".format(manifest_path))
     return open(manifest_path, mode)
 
 
@@ -164,6 +167,15 @@ def post_render_addon(configurator):
                      '/README.rst.oca')
         _delete_file(configurator, variables['addon.name'] +
                      '/static/description/icon.png.oca')
+    version = variables['addon.version']
+    if len(version) >= 2 and version[:2] == u'10':
+        manifest_file = os.path.join(
+            configurator.target_directory,
+            variables['addon.name'] + '/__openerp__.py')
+        manifest_new_file = os.path.join(
+            configurator.target_directory,
+            variables['addon.name'] + '/__manifest__.py')
+        os.rename(manifest_file, manifest_new_file)
     # show message if any
     show_message(configurator)
 
@@ -176,6 +188,8 @@ def post_render_addon(configurator):
 def pre_render_test(configurator):
     _load_manifest(configurator)  # check manifest is present
     variables = configurator.variables
+    variables['odoo.version'] = \
+        int(variables['odoo.version'])
     variables['test.name_camelcased'] = \
         _underscored_to_camelcased(variables['test.name_underscored'])
 
