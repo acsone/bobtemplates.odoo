@@ -5,6 +5,11 @@ Changes
 .. ----------
 .. -
 
+1.1.0
+-----
+
+- [IMP] Supports 10.0
+
 1.0.0 (2016-09-01)
 ------------------
 - [IMP] wizard: improve form view template
