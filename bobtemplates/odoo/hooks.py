@@ -8,6 +8,7 @@ import re
 
 from mrbob.bobexceptions import ValidationError
 from mrbob.hooks import show_message
+from pkg_resources import parse_version
 
 
 def _dotted_to_camelcased(dotted):
@@ -168,7 +169,7 @@ def post_render_addon(configurator):
         _delete_file(configurator, variables['addon.name'] +
                      '/static/description/icon.png.oca')
     version = variables['addon.version']
-    if len(version) >= 2 and version[:2] == u'10':
+    if parse_version(version) >= parse_version('10.0'):
         manifest_file = os.path.join(
             configurator.target_directory,
             variables['addon.name'] + '/__openerp__.py')
