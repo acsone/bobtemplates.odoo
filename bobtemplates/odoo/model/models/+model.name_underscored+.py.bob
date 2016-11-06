@@ -6,12 +6,28 @@ from {{% if odoo.version >= 10 %}}odoo{{% else %}}openerp{{% endif %}} import ap
 
 
 class {{{ model.name_camelcased }}}(models.Model):
-
-{{% if model.inherit: %}}
+{{% if model.inherit == True %}}
     _inherit = '{{{ model.name_dotted }}}'
 {{% else %}}
     _name = '{{{ model.name_dotted }}}'
     _description = '{{{ model.name_camelwords }}}'  # TODO
 
-    name = fields.Char()
 {{% endif %}}
+{{% for field_name, (field_string, field_type, attrs, extras, model_name, selection, default, related_field, groups) in model.fields_mapped.iteritems() %}}
+{{% if 'compute' in extras %}}
+
+    @api.multi
+    @api.depends() #TODO
+    def _compute_{{{ field_name}}}(self):
+        for obj in self:
+            obj.{{{ field_name}}} = False #TODO
+{{% endif %}}
+{{% if 'inverse' in extras %}}
+
+    @api.one
+    def _inverse_{{{ field_name}}}(self):
+        if self.{{{ field_name}}}:
+            pass #TODO
+{{% endif %}}
+    {{{  field_name }}} = fields.{{{  field_type.capitalize() }}}({{%  if 'many' in field_type %}}'{{{ model_name }}}', {{% endif %}}{{%  if related_field and 'many' in field_type %}}'{{{ related_field }}}', {{% endif %}}{{% if field_type=='selection' and selection %}}{{{ selection }}}, {{% endif %}}string='{{{  field_string }}}', {{%  for x , y in attrs %}}{{{ x }}}={{{ y }}}, {{% endfor %}}{{%  if 'compute' in extras %}}compute='_compute_{{{ field_name}}}', {{% endif %}}{{%  if 'inverse' in extras %}}inverse='_inverse_{{{ field_name}}}', {{% endif %}}{{%  if default %}}default={{{ default }}}, {{% endif %}})
+{{% endfor %}}
