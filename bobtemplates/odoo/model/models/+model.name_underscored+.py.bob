@@ -6,7 +6,7 @@ from {{% if odoo.version >= 10 %}}odoo{{% else %}}openerp{{% endif %}} import ap
 
 
 class {{{ model.name_camelcased }}}(models.Model):
-{{% if model.inherit == True %}}
+{{% if model.inherit %}}
     _inherit = '{{{ model.name_dotted }}}'
 {{% else %}}
     _name = '{{{ model.name_dotted }}}'
