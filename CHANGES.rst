@@ -5,6 +5,10 @@ Changes
 .. ----------
 .. -
 
+1.1.1
+------------------
+- [FIX] wizard: Return correct action type
+
 1.1.0 (2016-10-28)
 ------------------
 - [IMP] Odoo 10.0 support
