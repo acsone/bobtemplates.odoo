@@ -20,7 +20,7 @@ class {{{ wizard.name_camelcased }}}(models.TransientModel):
             # TODO
             pass
         action = {
-            'type': 'ir.action.act_window',
+            'type': 'ir.actions.act_window',
             'name': 'Action Name',  # TODO
             'res_model': 'result.model',  # TODO
             'domain': [('id', '=', result_ids)],  # TODO
