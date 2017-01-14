@@ -6,16 +6,11 @@ How to run tests
 How to release
 ==============
 
-* update version in setup.py
-* update changelog in CHANGES.rst
+* update changelog in CHANGES.rst, referring to the next version
 * python setup.py check --restructuredtext
 * commit everything
-* git clean -fdx
 * make sure tests pass!
-* git tag <version>
+* git tag <version>, where <version> is pep 440 compliant
 * git push --tags
-* python setup.py sdist bdist_wheel
-* twine upload
-* increment version (last digit + .dev)
-* add unreleased line on top of CHANGES.rst
-* git commit and push
+
+Uploading of tagged versions to pypi will be taken care of by travis.

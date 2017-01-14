@@ -7,7 +7,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='bobtemplates.odoo',
-    version='1.1.0',
+    use_scm_version=True,
     description='mr.bob templates for Odoo projects',
     long_description='\n'.join((
         open('README.rst').read(),
@@ -32,5 +32,8 @@ setup(
     # TODO: bobtemplates.odoo should be a ns package too but that breaks mr.bob
     namespace_packages=['bobtemplates'],
     include_package_data=True,
-    setup_requires=['setuptools-git'],
+    setup_requires=[
+        'setuptools-git',
+        'setuptools_scm',
+    ],
 )
