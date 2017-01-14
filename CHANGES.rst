@@ -5,9 +5,10 @@ Changes
 .. ----------
 .. -
 
-1.1.1
+1.1.1 (2017-01-14)
 ------------------
 - [FIX] wizard: Return correct action type
+- [IMP] do not add items (eg views) that already exists in manifest
 
 1.1.0 (2016-10-28)
 ------------------
