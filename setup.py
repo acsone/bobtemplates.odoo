@@ -14,12 +14,13 @@ setup(
         open('CHANGES.rst').read(),
     )),
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: '
         'GNU Affero General Public License v3 or later (AGPLv3+)',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
+        'Framework :: Odoo',
     ],
     license='LGPLv3',
     author='ACSONE SA/NV',

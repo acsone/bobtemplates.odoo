@@ -5,6 +5,10 @@ Changes
 .. ----------
 .. -
 
+1.1.2 (2017-04-07)
+------------------
+- updated pypi trove classifiers, no functional changer
+
 1.1.1 (2017-01-14)
 ------------------
 - [FIX] wizard: Return correct action type
