@@ -10,6 +10,157 @@ from mrbob.bobexceptions import ValidationError
 from mrbob.hooks import show_message
 from pkg_resources import parse_version
 
+ODOO_FIELDS = [
+        'char',
+        'int', 'integer',
+        'date',
+        'datetime',
+        'text',
+        'selection',
+        'm2o', 'many2one',
+        'm2m', 'many2many',
+        'o2m', 'one2many',
+        'bool', 'boolean',
+        'bin', 'binary',
+        'float',
+]
+
+def _fields_to_dict(fields):
+    _fields = fields and fields.split(' ') or []
+    res = {}
+    for f in _fields:
+        if f:
+            attrs = f.split(':')
+            field_name = attrs[0]
+            field_string = _dotted_to_camelwords(field_name)
+            for string in attrs :
+                if string.strip() :
+                    string = string.strip()
+                    if string[0].isalpha()  and string[0] == string.capitalize()[0]:
+                        field_string = string
+            related_field = [x for x in attrs[1:] if '_' in x]
+            related_field = related_field and related_field[0] or ''
+            model = default = False
+            groups = ''
+            selection = []
+            field_type = list(set(ODOO_FIELDS).intersection(set(attrs)))
+            field_type = field_type and field_type[0] or False
+            if field_type:
+                attrs.remove(field_type)
+            if field_type == 'o2m' : field_type = 'one2many'
+            if field_type == 'm2m' : field_type = 'many2many'
+            if field_type == 'm2o' : field_type = 'many2one'
+            if field_type == 'bool' : field_type = 'boolean'
+            if field_type == 'bin' : field_type = 'binary'
+            if field_type == 'int' : field_type = 'integer'
+            if not field_type:
+                if field_name == 'sequence' :
+                    field_type = 'integer'
+                elif field_name == 'company_id' :
+                    field_type = 'many2one'
+                    model='res.company'
+                elif field_name == 'currency_id' :
+                    field_type = 'many2one'
+                    model='res.currency'
+                elif field_name == 'journal_id' :
+                    field_type = 'many2one'
+                    model='account.journal'
+                elif field_name == 'account_id' :
+                    field_type = 'many2one'
+                    model='account.account'
+                elif field_name == 'product_id' :
+                    field_type = 'many2one'
+                    model='product.product'
+                elif field_name == 'company_id' :
+                    field_type = 'many2one'
+                    model='res.company'
+                elif field_name == 'partner_id' :
+                    field_type = 'many2one'
+                    model='res.partner'
+                elif field_name == 'user_id' :
+                    field_type = 'many2one'
+                    model='res.users'
+                elif field_name == 'state' :
+                    field_type = 'selection'
+                    attrs.append('readonly')
+                elif field_name.endswith('s_id'):
+                    field_type = 'many2many'
+                elif field_name.endswith('_id'):
+                    field_type = 'many2one'
+                elif field_name.endswith('_ids'):
+                    field_type = 'one2many'
+                elif 'amount' in field_name:
+                    field_type = 'float'
+                elif 'date' in field_name:
+                    field_type = 'date'
+                elif 'count' in field_name:
+                    field_type = 'integer'
+                elif 'active' in field_name:
+                    field_type = 'integer'
+                    default = True
+            args = []
+            extras = []
+            if 'readonly' in attrs or 'ro' in attrs:
+                args.append(('readonly' , True),)
+            if 'required' in attrs :
+                args.append(('required' ,True),)
+            if 'store' in attrs :
+                args.append(('store' ,True),)
+            if 'nocopy' in attrs :
+                args.append(('copy' ,False),)
+            if 'translate' in attrs :
+                args.append(('translate' ,True),)
+            if 'nolist' in attrs or 'notree' in attrs:
+                extras.append('notree')
+            if 'noform' in attrs:
+                extras.append('noform')
+            if 'search' in attrs:
+                extras.append('search')
+            if 'compute' in attrs:
+                extras.append('compute')
+            if 'inverse' in attrs:
+                extras.append('inverse')
+                extras.append('compute')
+                store_exists = False
+                for i, arg in enumerate(args):
+                    if arg[0] == 'store':
+                        args[i] = ('store' ,False)
+                        store_exists = True
+                        break
+                if not store_exists :
+                    args.append(('store' ,False),)
+            for attr in attrs:
+                if ',' in attr :
+                    selection = attr.split(',')
+                    if selection:
+                        default = selection[0]
+                if '.' in attr :
+                    model = attr
+            if not field_type:
+                if model and '.' in model:
+                    field_type = 'many2one'
+                else:
+                    field_type = 'char'
+            if model == 'res.company' and 'many' in field_type:
+                groups='base.group_multi_company'
+            if model == 'res.currency' and 'many' in field_type:
+                groups='base.group_multi_currency'
+            if default:
+                if unicode(default) in ['now','today']:
+                    if field_type == 'date':
+                        default='lambda self: fields.Date.today()'
+                    if field_type == 'datetime':
+                        default='lambda self: fields.Datetime.now()'
+                if unicode(default) in ['me','user']:
+                    if field_type == 'many2one' or field_type == 'many2many':
+                        default='lambda self: self.env.user'
+                if unicode(default) in ['company']:
+                    if field_type == 'many2one':
+                        default='lambda self: self.env.user.company_id'
+                if field_type == 'selection':
+                    default = "'%s'" % default
+            res[field_name] = (field_string, field_type, args, extras, model, [(x, x.capitalize()) for x in selection], default, related_field, groups)
+    return res
 
 def _dotted_to_camelcased(dotted):
     return ''.join([s.capitalize() for s in dotted.split('.')])
@@ -17,6 +168,9 @@ def _dotted_to_camelcased(dotted):
 
 def _dotted_to_underscored(dotted):
     return dotted.replace('.', '_')
+
+def _underscored_to_dotted(dotted):
+    return dotted.replace('_', '.')
 
 
 def _dotted_to_camelwords(dotted):
@@ -111,6 +265,8 @@ def pre_render_model(configurator):
         _dotted_to_underscored(variables['model.name_dotted'])
     variables['model.name_camelcased'] = \
         _dotted_to_camelcased(variables['model.name_dotted'])
+    variables['model.fields_mapped'] = \
+        _fields_to_dict(variables['model.fields'])
     variables['model.name_camelwords'] = \
         _dotted_to_camelwords(variables['model.name_dotted'])
     variables['addon.name'] = \
