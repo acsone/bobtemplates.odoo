@@ -7,7 +7,9 @@
 {{% else %}}
 <odoo>
 {{% endif %}}
+{{% if odoo.version < 10 %}}
 <data>
+{{% endif %}}
 
 {{% if model.view_form %}}
     <record model="ir.ui.view" id="{{{ model.name_underscored }}}_form_view">
@@ -91,9 +93,11 @@
         <field name="action" ref="{{{ model.name_underscored }}}_act_window"/>
         <field name="sequence" eval="16"/> <!-- TODO -->
     </record>
-{{% endif %}}
 
+{{% endif %}}
+{{% if odoo.version < 10 %}}
 </data>
+{{% endif %}}
 {{% if odoo.version < 9 %}}
 </openerp>
 {{% else %}}

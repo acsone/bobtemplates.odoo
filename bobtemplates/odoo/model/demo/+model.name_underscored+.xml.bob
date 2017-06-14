@@ -4,10 +4,13 @@
 
 {{% if odoo.version < 9 %}}
 <openerp>
-{{% else %}}
-<odoo>
-{{% endif %}}
 <data noupdate="1">
+{{% elif odoo.version == 9 %}}
+<odoo>
+<data noupdate="1">
+{{% else %}}
+<odoo noupdate="1">
+{{% endif %}}
 
     <!-- TODO
     <record model="{{{ model.name_dotted }}}" id="{{{ model.name_underscored }}}_demo_1">
@@ -15,7 +18,9 @@
     </record>
     -->
 
+{{% if odoo.version < 10 %}}
 </data>
+{{% endif %}}
 {{% if odoo.version < 9 %}}
 </openerp>
 {{% else %}}

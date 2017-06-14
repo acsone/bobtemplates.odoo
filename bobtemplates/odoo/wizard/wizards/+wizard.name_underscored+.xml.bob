@@ -7,7 +7,9 @@
 {{% else %}}
 <odoo>
 {{% endif %}}
+{{% if odoo.version < 10 %}}
 <data>
+{{% endif %}}
 
 {{% if wizard.view_form %}}
     <record model="ir.ui.view" id="{{{ wizard.name_underscored }}}_form_view">
@@ -69,7 +71,9 @@
     </record>
 {{% endif %}}
 
+{{% if odoo.version < 10 %}}
 </data>
+{{% endif %}}
 {{% if odoo.version < 9 %}}
 </openerp>
 {{% else %}}

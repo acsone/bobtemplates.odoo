@@ -5,6 +5,10 @@ Changes
 .. ----------
 .. -
 
+1.2.0 (?)
+------------------
+- [CHG] The data tag in XML file is no longer required in version 10 and following 
+
 1.1.2 (2017-04-07)
 ------------------
 - updated pypi trove classifiers, no functional changer
