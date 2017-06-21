@@ -78,7 +78,7 @@ def _add_local_import(configurator, package, module):
         init = open(init_path).read()
     else:
         init = ''
-    if import_string not in init:
+    if import_string not in init.split():
         open(init_path, 'a').write(import_string + '\n')
 
 
