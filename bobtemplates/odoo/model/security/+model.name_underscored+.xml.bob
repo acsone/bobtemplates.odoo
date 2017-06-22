@@ -4,10 +4,10 @@
 
 {{% if odoo.version < 9 %}}
 <openerp>
+<data>
 {{% else %}}
 <odoo>
 {{% endif %}}
-<data>
 
     <record model="ir.model.access" id="{{{ model.name_underscored }}}_access_name"> <!-- TODO acl id -->
         <field name="name">{{{ model.name_dotted }}} access name</field> <!-- TODO acl name -->
@@ -20,8 +20,8 @@
         <field name="perm_unlink" eval="0"/>
     </record>
 
-</data>
 {{% if odoo.version < 9 %}}
+</data>
 </openerp>
 {{% else %}}
 </odoo>

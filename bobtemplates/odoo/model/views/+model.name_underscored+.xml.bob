@@ -4,11 +4,9 @@
 
 {{% if odoo.version < 9 %}}
 <openerp>
+<data>
 {{% else %}}
 <odoo>
-{{% endif %}}
-{{% if odoo.version < 10 %}}
-<data>
 {{% endif %}}
 
 {{% if model.view_form %}}
@@ -95,10 +93,8 @@
     </record>
 
 {{% endif %}}
-{{% if odoo.version < 10 %}}
-</data>
-{{% endif %}}
 {{% if odoo.version < 9 %}}
+</data>
 </openerp>
 {{% else %}}
 </odoo>
