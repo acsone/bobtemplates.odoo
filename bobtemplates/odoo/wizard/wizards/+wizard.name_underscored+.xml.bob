@@ -4,11 +4,9 @@
 
 {{% if odoo.version < 9 %}}
 <openerp>
+<data>
 {{% else %}}
 <odoo>
-{{% endif %}}
-{{% if odoo.version < 10 %}}
-<data>
 {{% endif %}}
 
 {{% if wizard.view_form %}}
@@ -26,14 +24,24 @@
                     <field name="name"/>
                 </group>
                 <footer>
-                    <button name='doit'
-                        string='OK'
-                        class='btn-primary oe_highlight'
-                        type='object'/>
+                    <button name="doit"
+                            string="OK"
+                            {{% if odoo.version < 9 %}}
+                            class="oe_highlight"
+                            {{% else %}}
+                            class="btn-primary"
+                            {{% endif %}}
+                            type="object"/>
+                    {{% if odoo.version < 9 %}}
                     or
-                    <button string='Cancel'
-                        class='btn-default oe_link'
-                        special='cancel'/>
+                    {{% endif %}}
+                    <button string="Cancel"
+                            {{% if odoo.version < 9 %}}
+                            class="oe_link"
+                            {{% else %}}
+                            class="btn-default"
+                            {{% endif %}}
+                            special="cancel"/>
                 </footer>
             </form>
 {{% else %}}
@@ -71,10 +79,8 @@
     </record>
 {{% endif %}}
 
-{{% if odoo.version < 10 %}}
-</data>
-{{% endif %}}
 {{% if odoo.version < 9 %}}
+</data>
 </openerp>
 {{% else %}}
 </odoo>
