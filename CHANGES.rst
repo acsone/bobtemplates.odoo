@@ -5,9 +5,11 @@ Changes
 .. ----------
 .. -
 
-1.2.0 (?)
+1.2.0 (2017-09-11)
 ------------------
-- [CHG] The data tag in XML file is no longer required in version 10 and following 
+- [CHG] The data tag in XML file is no longer required in version 9 and following 
+- [FIX] issue when adding imports to __init__.py
+- [IMP] better button template in form views
 
 1.1.2 (2017-04-07)
 ------------------

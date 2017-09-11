@@ -87,6 +87,7 @@ Contributors:
   * Adrien Peiffer (`ACSONE <http://acsone.eu/>`_) 
   * Olivier Laurent (`ACSONE <http://acsone.eu/>`_)
   * Mohamed Cherkaoui
+  * Thomas Binsfeld (`ACSONE <http://acsone.eu/>`_)
 
 Maintainer
 ----------
