@@ -26,21 +26,21 @@
                 <footer>
                     <button name="doit"
                             string="OK"
-                            {{% if odoo.version < 9 %}}
+{{% if odoo.version < 9 %}}
                             class="oe_highlight"
-                            {{% else %}}
+{{% else %}}
                             class="btn-primary"
-                            {{% endif %}}
+{{% endif %}}
                             type="object"/>
-                    {{% if odoo.version < 9 %}}
+{{% if odoo.version < 9 %}}
                     or
-                    {{% endif %}}
+{{% endif %}}
                     <button string="Cancel"
-                            {{% if odoo.version < 9 %}}
+{{% if odoo.version < 9 %}}
                             class="oe_link"
-                            {{% else %}}
+{{% else %}}
                             class="btn-default"
-                            {{% endif %}}
+{{% endif %}}
                             special="cancel"/>
                 </footer>
             </form>
@@ -63,10 +63,10 @@
 
 {{% if wizard.action_multi %}}
     <record model="ir.values" id="{{{ wizard.name_underscored }}}_act_multi">
-        <field name="name">{{{ wizard.name_camelwords }}}</field><!-- TODO -->
+        <field name="name">{{{ wizard.name_camelwords }}}</field> <!-- TODO -->
         <field name="key2">client_action_multi</field>
         <field name="value" eval="'ir.actions.act_window,' +str(ref('{{{ wizard.name_underscored }}}_act_window'))" />
-        <field name="model">source.model</field><!-- TODO -->
+        <field name="model">source.model</field> <!-- TODO -->
     </record>
 {{% endif %}}
 
@@ -78,7 +78,6 @@
         <field name="sequence" eval="16"/> <!-- TODO -->
     </record>
 {{% endif %}}
-
 {{% if odoo.version < 9 %}}
 </data>
 </openerp>
