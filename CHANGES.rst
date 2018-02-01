@@ -5,6 +5,10 @@ Changes
 .. ----------
 .. -
 
+1.2.x (unreleased)
+------------------
+- [FIX] indentation in the wizard view
+
 1.2.0 (2017-09-11)
 ------------------
 - [CHG] The data tag in XML file is no longer required in version 9 and following 
