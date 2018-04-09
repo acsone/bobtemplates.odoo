@@ -195,6 +195,8 @@ def pre_render_test(configurator):
         int(variables['odoo.version'])
     variables['test.name_camelcased'] = \
         _underscored_to_camelcased(variables['test.name_underscored'])
+    variables['test.is_class_method'] = variables['test.common_class'] in (
+        'SavepointCase', 'SingleTransactionCase')
 
 
 def post_render_test(configurator):
