@@ -9,6 +9,7 @@ Changes
 ------------------
 - [FIX] indentation in the wizard view
 - [IMP] Test Template: allow to choose test class
+- [FIX] prevent repeated imports in __init__.py
 
 1.2.0 (2017-09-11)
 ------------------

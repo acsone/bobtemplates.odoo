@@ -75,10 +75,11 @@ def _add_local_import(configurator, package, module):
                              package, '__init__.py')
     import_string = 'from . import {}'.format(module)
     if os.path.exists(init_path):
-        init = open(init_path).read()
+        with open(init_path, 'U') as f:
+            init = f.read()
     else:
         init = ''
-    if import_string not in init.split():
+    if import_string not in init.split('\n'):
         open(init_path, 'a').write(import_string + '\n')
 
 
