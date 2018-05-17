@@ -8,6 +8,7 @@ Changes
 1.2.x (unreleased)
 ------------------
 - [FIX] indentation in the wizard view
+- [IMP] Test Template: allow to choose test class
 
 1.2.0 (2017-09-11)
 ------------------

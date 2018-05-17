@@ -2,13 +2,19 @@
 # Copyright {{{ copyright.year }}} {{{ copyright.name }}}
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from {{% if odoo.version >= 10 %}}odoo{{% else %}}openerp{{% endif %}}.tests.common import TransactionCase
+from {{% if odoo.version >= 10 %}}odoo{{% else %}}openerp{{% endif %}}.tests.common import {{{ test.common_class }}}
 
 
-class {{{ test.name_camelcased }}}(TransactionCase):
+class {{{ test.name_camelcased }}}({{{test.common_class}}}):
 
+{{% if test.is_class_method %}}
+    @classmethod
+    def setUpClass(cls):
+        super({{{ test.name_camelcased }}}, cls).setUpClass()
+{{% else %}}
     def setUp(self):
         super({{{ test.name_camelcased }}}, self).setUp()
+{{% endif %}}
 
     def test_1(self):
         pass
