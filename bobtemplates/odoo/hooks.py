@@ -5,10 +5,25 @@
 import ast
 import os
 import re
+import subprocess
 
 from mrbob.bobexceptions import ValidationError
 from mrbob.hooks import show_message
 from pkg_resources import parse_version
+
+OCA_README_FILES = {
+    'description': 'DESCRIPTION.rst',
+    'install': 'INSTALL.rst',
+    'configure': 'CONFIGURE.rst',
+    'usage': 'USAGE.rst',
+    'develop': 'DEVELOP.rst',
+    'roadmap': 'ROADMAP.rst',
+    'history': 'HISTORY.rst',
+    'contributors': 'CONTRIBUTORS.rst',
+    'credits': 'CREDITS.rst',
+}
+
+OCA_README_DIR = 'readme'
 
 
 def _dotted_to_camelcased(dotted):
@@ -152,23 +167,62 @@ def post_render_model(configurator):
 # addon hooks
 #
 
+def _get_readme_description_value(configurator):
+    variables = configurator.variables
+    if variables['addon.summary']:
+        return variables['addon.summary']
+
+
+def _get_readme_contributors_value(configurator):
+    try:
+        user = subprocess.check_output(
+            ["git", "config", "user.name"],
+            universal_newlines=False,
+        ).replace("\n", "")
+        email = subprocess.check_output(
+            ['git', 'config', 'user.email'],
+            universal_newlines=False,
+        ).replace("\n", "")
+        contributor = '* {} <{}>'.format(user, email)
+        return contributor.strip()
+    except subprocess.CalledProcessError:
+        return ''
+
+
+def _set_readme_variables(configurator):
+    variables = configurator.variables
+    for key, value in OCA_README_FILES.iteritems():
+        try:
+            func = '_get_readme_%s_value' % key
+            variables['addon.readme_%s' % key] = globals()[func](configurator)
+        except KeyError:
+            variables['addon.readme_%s' % key] = ''
+            pass
+
 
 def pre_render_addon(configurator):
     variables = configurator.variables
     variables['addon.name_camelwords'] = \
         _underscored_to_camelwords(variables['addon.name'])
+    _set_readme_variables(configurator)
+
+
+def _remove_readme(configurator):
+    variables = configurator.variables
+    for _, rst in OCA_README_FILES.iteritems():
+        _delete_file(configurator, variables['addon.name'] +
+                     '/readme.oca/%s' % rst)
 
 
 def post_render_addon(configurator):
     variables = configurator.variables
     if variables['addon.oca']:
         _rm_suffix('.oca', configurator, variables['addon.name'] +
-                   '/README.rst.oca')
+                   '/readme.oca')
         _rm_suffix('.oca', configurator, variables['addon.name'] +
                    '/static/description/icon.png.oca')
     else:
-        _delete_file(configurator, variables['addon.name'] +
-                     '/README.rst.oca')
+        _remove_readme(configurator)
         _delete_file(configurator, variables['addon.name'] +
                      '/static/description/icon.png.oca')
     version = variables['addon.version']

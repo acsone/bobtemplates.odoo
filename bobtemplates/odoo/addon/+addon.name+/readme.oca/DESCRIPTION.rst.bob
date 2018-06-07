@@ -1,0 +1,3 @@
+{{% if addon.readme_description %}}
+{{{ addon.readme_description }}}
+{{% endif %}}

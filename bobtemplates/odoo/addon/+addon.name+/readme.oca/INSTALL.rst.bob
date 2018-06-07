@@ -1,0 +1,3 @@
+{{% if addon.readme_install %}}
+{{{ addon.readme_install }}}
+{{% endif %}}

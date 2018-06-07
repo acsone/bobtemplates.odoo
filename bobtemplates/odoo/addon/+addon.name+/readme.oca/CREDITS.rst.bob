@@ -1,0 +1,3 @@
+{{% if addon.readme_credits %}}
+{{{ addon.readme_credits }}}
+{{% endif %}}
