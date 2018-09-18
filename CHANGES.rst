@@ -7,6 +7,10 @@ Changes
 
 1.2.x (unreleased)
 ------------------
+-
+
+1.2.1 (2018-09-18)
+------------------
 - [FIX] indentation in the wizard view
 - [IMP] Test Template: allow to choose test class
 - [FIX] prevent repeated imports in __init__.py
