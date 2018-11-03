@@ -5,10 +5,13 @@
 import ast
 import os
 import re
+import subprocess
 
 from mrbob.bobexceptions import ValidationError
 from mrbob.hooks import show_message
 from pkg_resources import parse_version
+
+OCA_WEBSITE = "https://github.com/OCA/<repo>"
 
 
 def _dotted_to_camelcased(dotted):
@@ -152,9 +155,35 @@ def post_render_model(configurator):
 # addon hooks
 #
 
+def _set_oca_website(configurator):
+    default_website = configurator.variables['copyright.website']
+    website = OCA_WEBSITE
+    try:
+        result = subprocess.check_output(
+            "git config --get remote.origin.url",
+            shell=True,
+            universal_newlines=True,
+        )
+        if result:
+            regex = "[^\/]+(?=\.git$)"
+            match = re.search(regex, result)
+            if match:
+                website = website.replace('<repo>', match.group(0))
+    except:
+        if default_website:
+            website = default_website
+        else:
+            website = False
+        pass
+    return website
+
 
 def pre_render_addon(configurator):
     variables = configurator.variables
+    if variables['addon.oca']:
+        website = _set_oca_website(configurator)
+        if website:
+            variables['copyright.website'] = website
     variables['addon.name_camelwords'] = \
         _underscored_to_camelwords(variables['addon.name'])
 
