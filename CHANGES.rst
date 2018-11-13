@@ -9,6 +9,7 @@ Changes
 ------------------
 - [IMP] Some Odoo 11/12 support (default to 12)
 - [IMP] Do not add utf-8 headers to python 3 files
+- [IMP] Support python 3.6
 
 1.2.1 (2018-09-18)
 ------------------
