@@ -155,6 +155,7 @@ def post_render_model(configurator):
 
 def pre_render_addon(configurator):
     variables = configurator.variables
+    variables['odoo.version'] = parse_version(variables['addon.version'])[0]
     variables['addon.name_camelwords'] = \
         _underscored_to_camelwords(variables['addon.name'])
 
