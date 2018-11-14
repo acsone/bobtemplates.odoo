@@ -7,7 +7,9 @@ Changes
 
 1.2.x (unreleased)
 ------------------
--
+- [IMP] Some Odoo 11/12 support (default to 12)
+- [IMP] Do not add utf-8 headers to python 3 files
+- [IMP] Support python 3.6
 
 1.2.1 (2018-09-18)
 ------------------
@@ -17,7 +19,7 @@ Changes
 
 1.2.0 (2017-09-11)
 ------------------
-- [CHG] The data tag in XML file is no longer required in version 9 and following 
+- [CHG] The data tag in XML file is no longer required in version 9 and following
 - [FIX] issue when adding imports to __init__.py
 - [IMP] better button template in form views
 
