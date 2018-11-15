@@ -28,5 +28,5 @@ setup(
     # TODO: bobtemplates.odoo should be a ns package too but that breaks mr.bob
     namespace_packages=["bobtemplates"],
     include_package_data=True,
-    setup_requires=["setuptools-git", "setuptools_scm"],
+    setup_requires=["setuptools_scm"],
 )
