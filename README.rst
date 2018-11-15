@@ -84,7 +84,7 @@ Inspired by https://github.com/plone/bobtemplates.plone.
 
 Contributors:
 
-  * Adrien Peiffer (`ACSONE <http://acsone.eu/>`_) 
+  * Adrien Peiffer (`ACSONE <http://acsone.eu/>`_)
   * Olivier Laurent (`ACSONE <http://acsone.eu/>`_)
   * Mohamed Cherkaoui
   * Thomas Binsfeld (`ACSONE <http://acsone.eu/>`_)
