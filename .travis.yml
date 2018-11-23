@@ -21,7 +21,6 @@ jobs:
       python: 2.7
     - stage: test
       python: 3.6
-    - stage: test
     - stage: deploy
       script: echo "Deploy to PyPi"
       deploy:
