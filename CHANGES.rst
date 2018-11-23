@@ -5,7 +5,7 @@ Changes
 .. ----------
 .. -
 
-1.2.x (unreleased)
+1.3.0 (2018-11-23)
 ------------------
 - [IMP] Some Odoo 11/12 support (default to 12)
 - [IMP] Do not add utf-8 headers to python 3 files
