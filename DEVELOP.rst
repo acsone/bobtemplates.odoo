@@ -1,7 +1,14 @@
+How to set up dev environment
+=============================
+
+* run ``tox -e dev`` (if not installed ``apt-get install tox``)
+* run ``. ./.tox/dev/bin/activate``
+
 How to run tests
 ================
 
-* run ``tox`` (if not installed ``apt-get install tox``)
+* run ``deactivate`` - if you are currently in a dev pyenvironment
+* run ``tox``
 
 How to release
 ==============
