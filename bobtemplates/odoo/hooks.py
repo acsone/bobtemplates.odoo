@@ -6,7 +6,7 @@ import ast
 import os
 import re
 
-from mrbob.bobexceptions import ValidationError
+from mrbob.bobexceptions import SkipQuestion, ValidationError
 from mrbob.hooks import show_message
 from pkg_resources import parse_version
 
@@ -98,6 +98,12 @@ def _model_has_view(variables):
         or variables["model.view_search"]
         or variables["model.view_menu"]
     )
+
+
+def pre_docstring(configurator, question):
+    variables = configurator.variables
+    if variables["model.inherit"]:
+        raise SkipQuestion
 
 
 def pre_render_model(configurator):
