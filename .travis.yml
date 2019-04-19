@@ -1,6 +1,9 @@
 language: python
 
-cache: pip
+cache:
+  directories:
+  - "$HOME/.cache/pip"
+  - "$HOME/.cache/pre-commit"
 
 
 stages:
