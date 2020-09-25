@@ -3,16 +3,16 @@
 # Copyright {{{ copyright.year }}} {{{ copyright.name }}}
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from {{% if odoo.version >= 10 %}}odoo{{% else %}}openerp{{% endif %}} import api, fields, models, _
+from {{% if odoo.version >= 10 %}}odoo{{% else %}}openerp{{% endif %}} import _, api, fields, models
 
 
 class {{{ model.name_camelcased }}}(models.Model):
 
 {{% if model.inherit: %}}
-    _inherit = '{{{ model.name_dotted }}}'
+    _inherit = "{{{ model.name_dotted }}}"
 {{% else %}}
-    _name = '{{{ model.name_dotted }}}'
-    _description = '{{{ model.name_camelwords }}}'  # TODO
+    _name = "{{{ model.name_dotted }}}"
+    _description = "{{{ model.name_camelwords }}}"  # TODO
 
     name = fields.Char()
 {{% endif %}}

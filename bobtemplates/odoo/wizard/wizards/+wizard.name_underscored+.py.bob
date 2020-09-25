@@ -3,15 +3,15 @@
 # Copyright {{{ copyright.year }}} {{{ copyright.name }}}
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from {{% if odoo.version >= 10 %}}odoo{{% else %}}openerp{{% endif %}} import api, fields, models, _
+from {{% if odoo.version >= 10 %}}odoo{{% else %}}openerp{{% endif %}} import _, api, fields, models
 
 
 class {{{ wizard.name_camelcased }}}(models.TransientModel):
 
 {{% if wizard.inherit: %}}
-    _inherit = '{{{ wizard.name_dotted }}}'
+    _inherit = "{{{ wizard.name_dotted }}}"
 {{% else %}}
-    _name = '{{{ wizard.name_dotted }}}'
+    _name = "{{{ wizard.name_dotted }}}"
 
     name = fields.Char()
 
@@ -21,11 +21,11 @@ class {{{ wizard.name_camelcased }}}(models.TransientModel):
             # TODO
             pass
         action = {
-            'type': 'ir.actions.act_window',
-            'name': 'Action Name',  # TODO
-            'res_model': 'result.model',  # TODO
-            'domain': [('id', '=', result_ids)],  # TODO
-            'view_mode': 'form,tree',
+            "type": "ir.actions.act_window",
+            "name": "Action Name",  # TODO
+            "res_model": "result.model",  # TODO
+            "domain": [("id", "=", result_ids)],  # TODO
+            "view_mode": "form,tree",
         }
         return action
 {{% endif %}}
