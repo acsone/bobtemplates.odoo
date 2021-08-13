@@ -32,7 +32,7 @@ def _underscored_to_camelwords(underscored):
 
 
 def _delete_file(configurator, path):
-    """ remove file and remove it's directories if empty """
+    """remove file and remove it's directories if empty"""
     path = os.path.join(configurator.target_directory, path)
     os.remove(path)
     try:
@@ -56,7 +56,7 @@ def _load_manifest(configurator):
 
 
 def _insert_manifest_item(configurator, key, item):
-    """ Insert an item in the list of an existing manifest key """
+    """Insert an item in the list of an existing manifest key"""
     with _open_manifest(configurator) as f:
         manifest = f.read()
     if item in ast.literal_eval(manifest).get(key, []):
