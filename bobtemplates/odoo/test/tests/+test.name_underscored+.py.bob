@@ -11,10 +11,10 @@ class {{{ test.name_camelcased }}}({{{test.common_class}}}):
 {{% if test.is_class_method %}}
     @classmethod
     def setUpClass(cls):
-        super({{{ test.name_camelcased }}}, cls).setUpClass()
+        super({{% if odoo.version < 11 %}}{{{ test.name_camelcased }}}, cls{{% endif -%}}).setUpClass()
 {{% else %}}
     def setUp(self):
-        super({{{ test.name_camelcased }}}, self).setUp()
+        super({{% if odoo.version < 11 %}}{{{ test.name_camelcased }}}, self{{% endif -%}}).setUp()
 {{% endif %}}
 
     def test_1(self):
