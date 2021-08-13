@@ -5,6 +5,12 @@ Changes
 .. ----------
 .. -
 
+1.4.0 (2021-08-13)
+------------------
+- [ADD] Odoo 13 and 14 support
+- [IMP] use python3 super()
+- [IMP] better pep8 compatibility
+
 1.3.0 (2018-11-23)
 ------------------
 - [IMP] Some Odoo 11/12 support (default to 12)
