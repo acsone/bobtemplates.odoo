@@ -39,10 +39,7 @@ jobs:
       - name: "Run tox targets for ${{ matrix.python-version }}"
         run: |
           python -m tox
-      - name: Coveralls
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: codecov/codecov-action@v1
 
   deploy:
     runs-on: ubuntu-latest
