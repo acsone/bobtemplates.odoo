@@ -2,7 +2,7 @@ bobtemplates.odoo
 =================
 
 .. image:: https://img.shields.io/badge/license-AGPL--3-blue.svg
-   :target: http://www.gnu.org/licenses/agpl.html
+   :target: https://www.gnu.org/licenses/agpl.html
    :alt: License: AGPL 3.0 or Later
 .. image:: https://badge.fury.io/py/bobtemplates.odoo.svg
    :target: http://badge.fury.io/py/bobtemplates.odoo

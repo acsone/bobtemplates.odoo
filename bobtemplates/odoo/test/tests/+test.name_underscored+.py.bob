@@ -1,7 +1,7 @@
 {{% if odoo.version < 11 %}}# -*- coding: utf-8 -*-
 {{% endif -%}}
 # Copyright {{{ copyright.year }}} {{{ copyright.name }}}
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from {{% if odoo.version >= 10 %}}odoo{{% else %}}openerp{{% endif %}}.tests.common import {{{ test.common_class }}}
 
