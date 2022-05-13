@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright {{{ copyright.year }}} {{{ copyright.name }}}
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+
+{{% if odoo.version < 9 %}}
+<openerp>
+<data>
+{{% else %}}
+<odoo>
+{{% endif %}}
+
+    <record model="res.groups" id="{{{ addon.name }}}_name"> <!-- TODO group id -->
+        <field name="name"></field> <!-- TODO group name -->
+        <field name="model_id" ref="model_{{{ security.model.name_underscored }}}"/>
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]" />
+        <!-- TODO review and adapt -->
+        <field name="implied_ids" eval="[(4, ref(''))]" />
+    </record>
+
+{{% if odoo.version < 9 %}}
+</data>
+</openerp>
+{{% else %}}
+</odoo>
+{{% endif %}}

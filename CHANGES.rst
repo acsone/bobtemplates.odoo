@@ -3,7 +3,10 @@ Changes
 
 .. Future (?)
 .. ----------
-.. -
+
+1.4.2 (2022-05-13)
+------------------
+- [IMP] New option bobtemplates.odoo:security
 
 1.4.1 (2022-02-18)
 ------------------
