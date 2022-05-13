@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright {{{ copyright.year }}} {{{ copyright.name }}}
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+
+{{% if odoo.version < 9 %}}
+<openerp>
+<data>
+{{% else %}}
+<odoo>
+{{% endif %}}
+
+    <record model="ir.rule" id="{{{ security.model.name_underscored }}}_name_rule"> <!-- TODO rule id -->
+        <field name="name">{{{ security.model.name_dotted }}} name rule</field> <!-- TODO rule name -->
+        <field name="model_id" ref="model_{{{ security.model.name_underscored }}}"/>
+        <!-- TODO review and adapt -->
+        <field name="domain_force">[()]</field>
+        <field name="group_id" ref="base.group_user"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_write" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+         <field name="groups" eval="[(6, 0, [ref('')])]" />
+    </record>>
+
+{{% if odoo.version < 9 %}}
+</data>
+</openerp>
+{{% else %}}
+</odoo>
+{{% endif %}}

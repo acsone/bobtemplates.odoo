@@ -259,3 +259,48 @@ def post_render_wizard(configurator):
         _delete_file(configurator, view_path)
     # show message if any
     show_message(configurator)
+
+
+#
+# security hooks
+#
+def pre_render_security(configurator):
+    _load_manifest(configurator)  # check manifest is present
+    variables = configurator.variables
+    variables["odoo.version"] = int(variables["odoo.version"])
+    variables["security.model.name_underscored"] = _dotted_to_underscored(
+        variables["security.model.name_dotted"]
+    )
+    variables["addon.name"] = os.path.basename(
+        os.path.normpath(configurator.target_directory)
+    )
+
+
+def post_render_security(configurator):
+    variables = configurator.variables
+    # ACL
+    acl_path = "security/acl_{}.xml".format(
+        variables["security.model.name_underscored"]
+    )
+    if variables["security.acl"]:
+        _insert_manifest_item(configurator, "data", acl_path)
+    else:
+        _delete_file(configurator, acl_path)
+
+    # Group
+    group_path = "security/groups.xml"
+    if variables["security.group"]:
+        _insert_manifest_item(configurator, "data", group_path)
+    else:
+        _delete_file(configurator, group_path)
+
+    # Rule
+    rule_path = "security/rules_{}.xml".format(
+        variables["security.model.name_underscored"]
+    )
+    if variables["security.rule"]:
+        _insert_manifest_item(configurator, "data", rule_path)
+    else:
+        _delete_file(configurator, rule_path)
+    # show message if any
+    show_message(configurator)
