@@ -6,9 +6,15 @@ import ast
 import os
 import re
 
+import requests
 from mrbob.bobexceptions import ValidationError
-from mrbob.hooks import show_message
+from mrbob.hooks import show_message, to_boolean
 from pkg_resources import parse_version
+
+OCA_GITHUB_URL = (
+    "https://api.github.com/repos/OCA/maintainer-tools"
+    "/contents/template/module/readme"
+)
 
 
 def _dotted_to_camelcased(dotted):
@@ -86,6 +92,22 @@ def _rm_suffix(suffix, configurator, path):
     os.rename(path, path[: -len(suffix)])
 
 
+def _get_oca_readme_fragments(configurator, addon_name):
+
+    data = requests.get(OCA_GITHUB_URL).json()
+    for node in data:
+        if node["type"] != "file":
+            continue
+        file_name = node["name"]
+        file_url = node["download_url"]
+        r = requests.get(file_url)
+        path = os.path.join(
+            configurator.target_directory, addon_name + "readme", file_name
+        )
+        with open(path, "wb") as f:
+            f.write(r.content)
+
+
 #
 # model hooks
 #
@@ -147,29 +169,57 @@ def post_render_model(configurator):
 
 
 #
-# addon hooks
+# readme hooks
 #
 
 
-def pre_render_addon(configurator):
+def pre_render_readme(configurator):
     variables = configurator.variables
-    variables["odoo.version"] = int(variables["addon.version"].split(".")[0])
     variables["addon.name_camelwords"] = _underscored_to_camelwords(
         variables["addon.name"]
     )
 
 
+def post_render_readme(configurator, addon_name=""):
+    variables = configurator.variables
+    addon_name = addon_name + "/" if addon_name else addon_name
+    oca = (
+        variables["addon.oca"]
+        if isinstance(variables["addon.oca"], bool)
+        else to_boolean(False, False, variables["addon.oca"])
+    )
+    if oca:
+        _get_oca_readme_fragments(configurator, addon_name)
+        _delete_file(configurator, addon_name + "README.rst")
+    _delete_file(configurator, variables["addon.name"] + "/readme/dummy.txt")
+
+
+#
+# addon hooks
+#
+
+
+def pre_render_addon(configurator):
+    pre_render_readme(configurator)
+    variables = configurator.variables
+    variables["odoo.version"] = int(variables["addon.version"].split(".")[0])
+
+
 def post_render_addon(configurator):
     variables = configurator.variables
-    if variables["addon.oca"]:
-        _rm_suffix(".oca", configurator, variables["addon.name"] + "/README.rst.oca")
+    post_render_readme(configurator, addon_name=variables["addon.name"])
+    oca = (
+        variables["addon.oca"]
+        if isinstance(variables["addon.oca"], bool)
+        else to_boolean(False, False, variables["addon.oca"])
+    )
+    if oca:
         _rm_suffix(
             ".oca",
             configurator,
             variables["addon.name"] + "/static/description/icon.png.oca",
         )
     else:
-        _delete_file(configurator, variables["addon.name"] + "/README.rst.oca")
         _delete_file(
             configurator, variables["addon.name"] + "/static/description/icon.png.oca"
         )

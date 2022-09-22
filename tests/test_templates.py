@@ -45,13 +45,36 @@ class OdooTemplatesTest(BaseTemplateTest):
     answers_file = ""
     target_dir = ""
 
-    def _create_addon(self):
+    def _create_addon(self, answers_file="test_odoo_addon_acsone_answers.ini"):
         self.template = "addon"
-        self.answers_file = "test_odoo_addon_answers.ini"
+        self.answers_file = answers_file
         self.target_dir = "."
         return self.create_template()
 
-    def test_odoo_addon(self):
+    def test_odoo_addon_oca(self):
+        result = self._create_addon(answers_file="test_odoo_addon_answers.ini")
+        fragments = [
+            r
+            for r in result.files_created.keys()
+            if r.startswith(self.addon + "/readme/")
+        ]
+        files = result.files_created.copy()
+        for f in fragments:
+            files.pop(f, False)
+        self.assertEqual(
+            set(files.keys()),
+            {
+                self.addon,
+                self.addon + "/__init__.py",
+                self.addon + "/__manifest__.py",
+                self.addon + "/readme",
+                self.addon + "/static",
+                self.addon + "/static/description",
+                self.addon + "/static/description/icon.png",
+            },
+        )
+
+    def test_odoo_addon_acsone(self):
         result = self._create_addon()
         self.assertEqual(
             set(result.files_created.keys()),
@@ -60,9 +83,6 @@ class OdooTemplatesTest(BaseTemplateTest):
                 self.addon + "/__init__.py",
                 self.addon + "/__manifest__.py",
                 self.addon + "/README.rst",
-                self.addon + "/static",
-                self.addon + "/static/description",
-                self.addon + "/static/description/icon.png",
             },
         )
 
