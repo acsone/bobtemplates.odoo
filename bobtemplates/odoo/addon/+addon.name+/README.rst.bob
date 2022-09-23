@@ -1,0 +1,25 @@
+{{% for i in addon.name_camelwords %}}={{% endfor %}}
+
+{{{ addon.name_camelwords }}}
+{{% for i in addon.name_camelwords %}}={{% endfor %}}
+
+
+{{{ addon.summary }}}
+
+Configuration
+=============
+
+To configure this module, you need to:
+
+#. Go to ...
+
+Usage
+=====
+
+To use this module, you need to:
+
+#. Go to ...
+
+
+Changelog
+=========
