@@ -191,7 +191,7 @@ def post_render_readme(configurator, addon_name=""):
     if oca:
         _get_oca_readme_fragments(configurator, addon_name)
         _delete_file(configurator, addon_name + "README.rst")
-    _delete_file(configurator, variables["addon.name"] + "/readme/dummy.txt")
+    _delete_file(configurator, addon_name + "readme/dummy.txt")
 
 
 #
