@@ -5,6 +5,14 @@ Changes
 .. ----------
 .. -
 
+
+1.5.0 (2022-09-29)
+------------------
+
+- [ADD] Add readme template
+- [CHG] Download fragments from https://github.com/OCA/maintainer-tools
+  for OCA module (for usage of oca-gen-addon-readme)
+
 1.4.1 (2022-02-18)
 ------------------
 - [IMP] GNU: Change url to https
