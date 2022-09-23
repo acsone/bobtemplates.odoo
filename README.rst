@@ -15,11 +15,12 @@ templates to use when developing Odoo addons.
 
 It provides the following templates:
 
-  * ``addon``: an addon skeletton, with optional OCA README and icon
+  * ``addon``: an addon skeletton, with readme file and fragments/icon for OCA addon
   * ``model``: an Odoo model with accompanying form, tree, action, menu,
     demo data and ACL
   * ``test``: a test class
   * ``wizard``: a wizard with transient model, view and action
+  * ``readme``: Add readme file or fragments for OCA addon
 
 The following are candidates (pull requests welcome):
 
