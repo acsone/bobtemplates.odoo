@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright © 2016 ACSONE SA/NV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
@@ -78,7 +77,7 @@ def _add_local_import(configurator, package, module):
     init_path = os.path.join(configurator.target_directory, package, "__init__.py")
     import_string = "from . import {}".format(module)
     if os.path.exists(init_path):
-        with open(init_path, "U") as f:
+        with open(init_path) as f:
             init = f.read()
     else:
         init = ""
