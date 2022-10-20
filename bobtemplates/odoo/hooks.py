@@ -193,7 +193,7 @@ def post_render_readme(configurator, addon_name=""):
         if isinstance(generate_readme, bool)
         else to_boolean(False, False, generate_readme)
     )
-    if oca:
+    if oca and generate_readme:
         _get_oca_readme_fragments(configurator, addon_name)
     if oca or not generate_readme:
         _delete_file(configurator, addon_name + "README.rst")
