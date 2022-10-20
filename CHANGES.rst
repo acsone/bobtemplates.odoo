@@ -5,6 +5,11 @@ Changes
 .. ----------
 .. -
 
+2.1.0 (2022-10-20)
+------------------
+
+- [IMP] addon: add a question to generate the README file or not
+
 2.0.0 (2022-09-26)
 ------------------
 
