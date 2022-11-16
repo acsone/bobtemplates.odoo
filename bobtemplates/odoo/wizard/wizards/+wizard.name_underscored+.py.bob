@@ -15,7 +15,7 @@ class {{{ wizard.name_camelcased }}}(models.TransientModel):
 
     name = fields.Char()
 
-    @api.multi
+    {{% if odoo.version < 13 %}}@api.multi{{% endif -%}}
     def doit(self):
         for wizard in self:
             # TODO
