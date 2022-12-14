@@ -5,6 +5,13 @@ Changes
 .. ----------
 .. -
 
+3.0.0 (2022-12-14)
+------------------
+
+- Support python 3.11. Remove support of python 3.6.
+- [IMP] wizard: no api.multi decorator in Odoo >= 13
+
+
 2.1.0 (2022-10-20)
 ------------------
 
