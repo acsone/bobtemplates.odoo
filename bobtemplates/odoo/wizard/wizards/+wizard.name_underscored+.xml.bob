@@ -11,7 +11,9 @@
 
 {{% if wizard.view_form %}}
     <record model="ir.ui.view" id="{{{ wizard.name_underscored }}}_form_view">
+{{% if odoo.version < 12 %}}
         <field name="name">{{{ wizard.name_dotted }}}.form (in {{{ addon.name }}})</field>
+{{% endif %}}
         <field name="model">{{{ wizard.name_dotted }}}</field>
 {{% if wizard.inherit %}}
         <field name="inherit_id" ref="TODO othermodule.wizard"/>

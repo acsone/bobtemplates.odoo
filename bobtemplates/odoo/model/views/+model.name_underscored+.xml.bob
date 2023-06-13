@@ -11,7 +11,9 @@
 
 {{% if model.view_form %}}
     <record model="ir.ui.view" id="{{{ model.name_underscored }}}_form_view">
+{{% if odoo.version < 12 %}}
         <field name="name">{{{ model.name_dotted }}}.form (in {{{ addon.name }}})</field>
+{{% endif %}}
         <field name="model">{{{ model.name_dotted }}}</field>
 {{% if model.inherit %}}
         <field name="inherit_id" ref="TODO othermodule.form_view"/>
@@ -39,7 +41,9 @@
 
 {{% if model.view_search %}}
     <record model="ir.ui.view" id="{{{ model.name_underscored }}}_search_view">
+{{% if odoo.version < 12 %}}
         <field name="name">{{{ model.name_dotted }}}.search (in {{{ addon.name }}})</field>
+{{% endif %}}
         <field name="model">{{{ model.name_dotted }}}</field>
 {{% if model.inherit %}}
         <field name="inherit_id" ref="TODO othermodule.search_view"/>
@@ -58,7 +62,9 @@
 
 {{% if model.view_tree %}}
     <record model="ir.ui.view" id="{{{ model.name_underscored }}}_tree_view">
+{{% if odoo.version < 12 %}}
         <field name="name">{{{ model.name_dotted }}}.tree (in {{{ addon.name }}})</field>
+{{% endif %}}
         <field name="model">{{{ model.name_dotted }}}</field>
 {{% if model.inherit %}}
         <field name="inherit_id" ref="TODO othermodule.tree_view"/>
