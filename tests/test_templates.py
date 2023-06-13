@@ -10,7 +10,6 @@ from scripttest import TestFileEnvironment
 
 
 class BaseTemplateTest(unittest.TestCase):
-
     # credit bobtemplates.plone
 
     def setUp(self):
