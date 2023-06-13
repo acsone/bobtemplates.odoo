@@ -92,7 +92,6 @@ def _rm_suffix(suffix, configurator, path):
 
 
 def _get_oca_readme_fragments(configurator, addon_name):
-
     data = requests.get(OCA_GITHUB_URL).json()
     for node in data:
         if node["type"] != "file":
