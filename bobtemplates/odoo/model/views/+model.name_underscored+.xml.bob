@@ -71,10 +71,17 @@
 {{% endif %}}
         <field name="arch" type="xml">
 {{% if not model.inherit %}}
+{{% if odoo.version < 18 %}}
             <tree>
                 <!-- TODO -->
                 <field name="name"/>
             </tree>
+{{% else %}}
+            <list>
+                <!-- TODO -->
+                <field name="name"/>
+            </list>
+{{% endif %}}
 {{% else %}}
             <!-- TODO -->
 {{% endif %}}
