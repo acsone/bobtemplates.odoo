@@ -6,6 +6,13 @@
 
 {{{ addon.summary }}}
 
+Purpose
+=======
+
+This module does this and that...
+
+Explain the use case.
+
 Configuration
 =============
 
@@ -21,5 +28,7 @@ To use this module, you need to:
 #. Go to ...
 
 
-Changelog
-=========
+How to test
+===========
+
+...
