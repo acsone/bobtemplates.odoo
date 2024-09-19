@@ -93,7 +93,7 @@
     <record model="ir.actions.act_window" id="{{{ model.name_underscored }}}_act_window">
         <field name="name">{{{ model.name_camelwords }}}</field> <!-- TODO -->
         <field name="res_model">{{{ model.name_dotted }}}</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">{{% if odoo.version<18 %}}tree{{% else %}}list{{% endif %}},form</field>
         <field name="domain">[]</field>
         <field name="context">{}</field>
     </record>
