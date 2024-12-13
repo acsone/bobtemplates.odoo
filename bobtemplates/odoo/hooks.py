@@ -145,7 +145,7 @@ def post_render_model(configurator):
     # add new model import in __init__.py
     _add_local_import(configurator, "models", variables["model.name_underscored"])
     # views
-    view_path = "views/{}.xml".format(variables["model.name_underscored"])
+    view_path = "views/{}_views.xml".format(variables["model.name_underscored"])
     if _model_has_view(variables):
         _insert_manifest_item(configurator, "data", view_path)
     else:
