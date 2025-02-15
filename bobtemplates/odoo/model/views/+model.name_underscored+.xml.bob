@@ -30,11 +30,11 @@
                         <field name="name"/>
                     </group>
                 </sheet>
-{{% if odoo.version < 18 %}}                
+{{% if odoo.version < 18 %}}
                 <div class="oe_chatter"></div>
 {{% else %}}
                 <chatter/>
-{{% endif %}}                
+{{% endif %}}
             </form>
 {{% else %}}
             <!-- TODO -->
