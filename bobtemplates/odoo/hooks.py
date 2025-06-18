@@ -2,8 +2,10 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 import ast
+import datetime
 import os
 import re
+import json
 
 import requests
 from mrbob.bobexceptions import ValidationError
@@ -106,6 +108,30 @@ def _get_oca_readme_fragments(configurator, addon_name):
             f.write(r.content)
 
 
+def pre_ask_odoo_version(configurator, question):
+    manifest = _load_manifest(configurator)
+    if manifest:
+        version = manifest.get("version").split(".")[0]
+        question.default = version
+
+
+def pre_ask_copyright_holder(configurator, question):
+    manifest = _load_manifest(configurator)
+    if manifest:
+        author = manifest.get("author").split(",")[0]
+        question.default = author
+
+
+def pre_ask_test_filename(configurator, question):
+    current_path = os.getcwd()
+    path, dirname = os.path.split(current_path)
+    question.default = "test_" + dirname
+
+
+def pre_ask_year(configurator, question):
+    question.default = datetime.date.today().strftime("%Y")
+
+    
 #
 # model hooks
 #
