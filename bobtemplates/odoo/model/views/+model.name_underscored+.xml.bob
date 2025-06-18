@@ -10,7 +10,7 @@
 {{% endif %}}
 
 {{% if model.view_form %}}
-    <record model="ir.ui.view" id="{{{ model.name_underscored }}}_form_view">
+    <record id="{{{ model.name_underscored }}}_form_view" model="ir.ui.view">
 {{% if odoo.version < 12 %}}
         <field name="name">{{{ model.name_dotted }}}.form (in {{{ addon.name }}})</field>
 {{% endif %}}
@@ -44,7 +44,7 @@
 {{% endif %}}
 
 {{% if model.view_search %}}
-    <record model="ir.ui.view" id="{{{ model.name_underscored }}}_search_view">
+    <record id="{{{ model.name_underscored }}}_search_view" model="ir.ui.view">
 {{% if odoo.version < 12 %}}
         <field name="name">{{{ model.name_dotted }}}.search (in {{{ addon.name }}})</field>
 {{% endif %}}
@@ -65,7 +65,7 @@
 {{% endif %}}
 
 {{% if model.view_tree %}}
-    <record model="ir.ui.view" id="{{{ model.name_underscored }}}_tree_view">
+    <record id="{{{ model.name_underscored }}}_tree_view" model="ir.ui.view">
 {{% if odoo.version < 12 %}}
         <field name="name">{{{ model.name_dotted }}}.tree (in {{{ addon.name }}})</field>
 {{% endif %}}
@@ -94,7 +94,7 @@
 {{% endif %}}
 
 {{% if model.view_menu %}}
-    <record model="ir.actions.act_window" id="{{{ model.name_underscored }}}_act_window">
+    <record id="{{{ model.name_underscored }}}_act_window" model="ir.actions.act_window">
         <field name="name">{{{ model.name_camelwords }}}</field> <!-- TODO -->
         <field name="res_model">{{{ model.name_dotted }}}</field>
         <field name="view_mode">{{% if odoo.version<18 %}}tree{{% else %}}list{{% endif %}},form</field>
@@ -102,7 +102,7 @@
         <field name="context">{}</field>
     </record>
 
-    <record model="ir.ui.menu" id="{{{ model.name_underscored }}}_menu">
+    <record id="{{{ model.name_underscored }}}_menu" model="ir.ui.menu">
         <field name="name">{{{ model.name_camelwords }}}</field>
         <field name="parent_id" ref="xmlid of parent menu"/> <!-- TODO -->
         <field name="action" ref="{{{ model.name_underscored }}}_act_window"/>
