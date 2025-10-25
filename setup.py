@@ -29,4 +29,9 @@ setup(
     include_package_data=True,
     setup_requires=["setuptools_scm"],
     python_requires=">=3.7",
+    entry_points={
+        "console_scripts": [
+            "mrbob = mrbob.cli:main",
+        ],
+    },
 )
