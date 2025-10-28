@@ -213,21 +213,6 @@ def pre_render_addon(configurator):
 def post_render_addon(configurator):
     variables = configurator.variables
     post_render_readme(configurator, addon_name=variables["addon.name"])
-    oca = (
-        variables["addon.oca"]
-        if isinstance(variables["addon.oca"], bool)
-        else to_boolean(False, False, variables["addon.oca"])
-    )
-    if oca:
-        _rm_suffix(
-            ".oca",
-            configurator,
-            variables["addon.name"] + "/static/description/icon.png.oca",
-        )
-    else:
-        _delete_file(
-            configurator, variables["addon.name"] + "/static/description/icon.png.oca"
-        )
     version = variables["addon.version"]
     if parse_version(version) >= parse_version("10.0"):
         manifest_file = os.path.join(
