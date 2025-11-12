@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright {{{ copyright.year }}} {{{ copyright.name }}}
-     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+{{% if odoo.licence == "AGPL" %}}
+    License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+{{% endif %}}
+{{% if odoo.licence == "LGPL" %}}
+    License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl).
+{{% endif %}}
+-->
 
 {{% if odoo.version < 9 %}}
 <openerp>
