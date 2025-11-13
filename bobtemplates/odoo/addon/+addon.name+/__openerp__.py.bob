@@ -1,13 +1,25 @@
 {{% if odoo.version < 11 %}}# -*- coding: utf-8 -*-
 {{% endif -%}}
 # Copyright {{{ copyright.year }}} {{{ copyright.name }}}
-# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+{{% if odoo.licence == "AGPL" %}}
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl)
+{{% elif odoo.licence == "LGPL" %}}
+# License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl)
+{{% elif odoo.licence == "OTHER" %}}
+# License Other proprietary.
+{{% endif %}}
 
 {
     'name': '{{{ addon.name_camelwords }}}',
     'summary': """{{{ addon.summary }}}""",
     'version': '{{{ addon.version }}}',
+{{% if odoo.licence == "AGPL" %}}
     'license': 'AGPL-3',
+{{% elif odoo.licence == "LGPL" %}}
+    'license': 'LGPL-3',
+{{% elif odoo.licence == "OTHER" %}}
+    'license': 'Other proprietary',
+{{% endif %}}
     'author': '{{{ copyright.name }}}{{% if addon.oca %}},Odoo Community Association (OCA){{% endif %}}',
 {{% if copyright.website %}}
     'website': '{{{ copyright.website }}}',
