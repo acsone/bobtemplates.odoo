@@ -12,6 +12,7 @@ class {{{ wizard.name_camelcased }}}(models.TransientModel):
     _inherit = "{{{ wizard.name_dotted }}}"
 {{% else %}}
     _name = "{{{ wizard.name_dotted }}}"
+    _description = "{{{ wizard.name_camelwords }}}"
 
     name = fields.Char()
 

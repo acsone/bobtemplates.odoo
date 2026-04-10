@@ -165,6 +165,8 @@ class OdooTemplatesTest(BaseTemplateTest):
         self.assertEqual(
             set(result.files_created.keys()),
             {
+                self.addon + "/security",
+                self.addon + "/security/foo_wizard.xml",
                 self.addon + "/wizards",
                 self.addon + "/wizards/foo_wizard.py",
                 self.addon + "/wizards/__init__.py",

@@ -312,5 +312,8 @@ def post_render_wizard(configurator):
         _insert_manifest_item(configurator, "data", view_path)
     else:
         _delete_file(configurator, view_path)
+    # ACL
+    acl_path = "security/{}.xml".format(variables["wizard.name_underscored"])
+    _insert_manifest_item(configurator, "data", acl_path)
     # show message if any
     show_message(configurator)
