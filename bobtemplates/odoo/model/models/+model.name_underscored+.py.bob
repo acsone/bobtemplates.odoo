@@ -3,7 +3,7 @@
 # Copyright {{{ copyright.year }}} {{{ copyright.name }}}
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from {{% if odoo.version >= 10 %}}odoo{{% else %}}openerp{{% endif %}} import {{% if odoo.version < 18 %}}_, {{% endif %}}api, fields, models
+from {{% if odoo.version >= 10 %}}odoo{{% else %}}openerp{{% endif %}} import {{% if odoo.version < 18 %}}_, {{% endif %}}api, exceptions, fields, models
 
 
 class {{{ model.name_camelcased }}}(models.Model):
