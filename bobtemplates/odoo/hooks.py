@@ -207,7 +207,7 @@ def post_render_readme(configurator, addon_name=""):
 def pre_render_addon(configurator):
     pre_render_readme(configurator)
     variables = configurator.variables
-    variables["odoo.version"] = int(variables["addon.version"].split(".")[0])
+    variables["odoo.version"] = int(variables["addon.version"])
 
 
 def post_render_addon(configurator):
