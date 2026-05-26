@@ -20,6 +20,9 @@
 {{% endif %}}
 {{% endif %}}
     'depends': [
+{{% for dependency in addon.depends.split(',') if dependency.strip() %}}
+        '{{{ dependency.strip() }}}',
+{{% endfor %}}
     ],
     'data': [
     ],
