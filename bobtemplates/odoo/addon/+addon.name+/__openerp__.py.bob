@@ -11,6 +11,13 @@
     'author': '{{{ copyright.name }}}{{% if addon.oca %}},Odoo Community Association (OCA){{% endif %}}',
 {{% if copyright.website %}}
     'website': '{{{ copyright.website }}}',
+{{% if addon.oca and addon.maintainers %}}
+    'maintainers': [
+{{% for maintainer in addon.maintainers.split(',') if maintainer.strip() %}}
+        '{{{ maintainer.strip() }}}'{{% if not loop.last %}},{{% endif %}}
+{{% endfor %}}
+    ],
+{{% endif %}}
 {{% endif %}}
     'depends': [
     ],

@@ -1,6 +1,7 @@
 # Copyright © 2016 ACSONE SA/NV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
+import ast
 import os
 import shutil
 import tempfile
@@ -72,6 +73,9 @@ class OdooTemplatesTest(BaseTemplateTest):
                 self.addon + "/static/description/icon.png",
             },
         )
+        manifest_file = result.files_created[self.addon + "/__manifest__.py"]
+        manifest = ast.literal_eval(manifest_file.bytes)
+        self.assertEqual(manifest["maintainers"], ["user1", "user2"])
 
     def test_odoo_addon_acsone(self):
         result = self._create_addon()

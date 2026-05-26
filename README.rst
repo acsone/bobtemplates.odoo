@@ -89,6 +89,7 @@ Contributors:
   * Olivier Laurent (`ACSONE <http://acsone.eu/>`_)
   * Mohamed Cherkaoui
   * Thomas Binsfeld (`ACSONE <http://acsone.eu/>`_)
+  * Souheil Bejaoui (`ACSONE <http://acsone.eu/>`_)
 
 Maintainer
 ----------
