@@ -68,9 +68,6 @@ class OdooTemplatesTest(BaseTemplateTest):
                 self.addon + "/__init__.py",
                 self.addon + "/__manifest__.py",
                 self.addon + "/readme",
-                self.addon + "/static",
-                self.addon + "/static/description",
-                self.addon + "/static/description/icon.png",
             },
         )
         manifest_file = result.files_created[self.addon + "/__manifest__.py"]
