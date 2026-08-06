@@ -254,6 +254,7 @@ def pre_render_test(configurator):
         variables["test.name_underscored"]
     )
     variables["test.is_class_method"] = variables["test.common_class"] in (
+        "BaseCommon",
         "SavepointCase",
         "SingleTransactionCase",
     )
