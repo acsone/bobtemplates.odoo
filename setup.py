@@ -22,10 +22,8 @@ setup(
     author="ACSONE SA/NV",
     author_email="info@acsone.eu",
     url="http://github.com/acsone/bobtemplates.odoo",
-    install_requires=["mr.bob", "requests"],
+    install_requires=["mr.bob>=2", "requests"],
     packages=find_packages(exclude=["tests"]),
-    # TODO: bobtemplates.odoo should be a ns package too but that breaks mr.bob
-    namespace_packages=["bobtemplates"],
     include_package_data=True,
     setup_requires=["setuptools_scm"],
     python_requires=">=3.7",
