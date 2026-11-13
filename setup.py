@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # Copyright © 2016 ACSONE SA/NV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
@@ -8,12 +7,16 @@ setup(
     name="bobtemplates.odoo",
     use_scm_version=True,
     description="mr.bob templates for Odoo projects",
-    long_description="\n".join((open("README.rst").read(), open("CHANGES.rst").read())),
+    long_description="\n".join(
+        (open("README.rst").read(), open("CHANGES.rst").read())  # noqa: SIM115
+    ),
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
-        "License :: OSI Approved :: "
-        "GNU Affero General Public License v3 or later (AGPLv3+)",
+        (
+            "License :: OSI Approved :: "
+            "GNU Affero General Public License v3 or later (AGPLv3+)"
+        ),
         "Operating System :: OS Independent",
         "Programming Language :: Python",
         "Framework :: Odoo",

@@ -33,8 +33,8 @@ class BaseTemplateTest(unittest.TestCase):
             "target_dir": self.target_dir,
         }
         return self.env.run(
-            "mrbob -O %(target_dir)s --config "
-            "%(dir)s/%(answers_file)s bobtemplates.odoo:%(template)s" % options
+            "mrbob -O {target_dir} --config "
+            "{dir}/{answers_file} bobtemplates.odoo:{template}".format(**options)
         )
 
 
@@ -53,9 +53,7 @@ class OdooTemplatesTest(BaseTemplateTest):
     def test_odoo_addon_oca(self):
         result = self._create_addon(answers_file="test_odoo_addon_oca_answers.ini")
         fragments = [
-            r
-            for r in result.files_created.keys()
-            if r.startswith(self.addon + "/readme/")
+            r for r in result.files_created if r.startswith(self.addon + "/readme/")
         ]
         files = result.files_created.copy()
         self.assertTrue(fragments)
@@ -130,9 +128,7 @@ class OdooTemplatesTest(BaseTemplateTest):
         self.target_dir = "addon_foo"
         result = self.create_template()
         fragments = [
-            r
-            for r in result.files_created.keys()
-            if r.startswith(self.addon + "/readme/")
+            r for r in result.files_created if r.startswith(self.addon + "/readme/")
         ]
         files = result.files_created.copy()
         self.assertTrue(fragments)

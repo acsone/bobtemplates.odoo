@@ -54,7 +54,7 @@ def _open_manifest(configurator, mode="r"):
     if not os.path.exists(manifest_path):
         manifest_path = os.path.join(configurator.target_directory, "__manifest__.py")
         if not os.path.exists(manifest_path):
-            raise ValidationError("{} not found".format(manifest_path))
+            raise ValidationError(f"{manifest_path} not found")
     return open(manifest_path, mode)
 
 
@@ -69,8 +69,8 @@ def _insert_manifest_item(configurator, key, item):
         manifest = f.read()
     if item in ast.literal_eval(manifest).get(key, []):
         return
-    pattern = """(["']{}["']:\\s*\\[)""".format(key)
-    repl = """\\1\n        '{}',""".format(item)
+    pattern = f"""(["']{key}["']:\\s*\\[)"""
+    repl = f"""\\1\n        '{item}',"""
     manifest = re.sub(pattern, repl, manifest, re.MULTILINE)
     with _open_manifest(configurator, "w") as f:
         f.write(manifest)
@@ -78,14 +78,15 @@ def _insert_manifest_item(configurator, key, item):
 
 def _add_local_import(configurator, package, module):
     init_path = os.path.join(configurator.target_directory, package, "__init__.py")
-    import_string = "from . import {}".format(module)
+    import_string = f"from . import {module}"
     if os.path.exists(init_path):
         with open(init_path) as f:
             init = f.read()
     else:
         init = ""
     if import_string not in init.split("\n"):
-        open(init_path, "a").write(import_string + "\n")
+        with open(init_path, "a") as f:
+            f.write(import_string + "\n")
 
 
 def _rm_suffix(suffix, configurator, path):
